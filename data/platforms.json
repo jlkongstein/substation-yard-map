@@ -1,0 +1,1446 @@
+[
+  {
+    "id": "ijmuiden-ver-beta",
+    "name": "IJmuiden Ver Beta",
+    "project": "IJmuiden Ver Beta (TenneT 2 GW)",
+    "client": "TenneT NL",
+    "site_country": "Netherlands",
+    "type": "HVDC converter",
+    "capacity_mw": 2000,
+    "topside_t": 30000,
+    "epc": "GE Vernova / Seatrium",
+    "yards": [
+      {
+        "yard": "seatrium-tuas",
+        "role": "Topside fabrication"
+      },
+      {
+        "yard": "heerema-vlissingen",
+        "role": "Jacket"
+      }
+    ],
+    "status": "Fabrication",
+    "sailaway": null,
+    "cod": 2029,
+    "confidence": "high",
+    "notes": "First of TenneT's 2 GW platforms. Topside under construction in Singapore; jacket to leave Vlissingen summer 2027.",
+    "sources": [
+      {
+        "date": "2026-08-31",
+        "title": "Jacket for TenneT's IJmuiden Ver Beta Platform Starts Taking Shape",
+        "url": "https://www.offshorewind.biz/2026/08/31/jacket-for-tennets-ijmuiden-ver-beta-platform-starts-taking-shape/"
+      },
+      {
+        "date": "2024-09-11",
+        "title": "Construction of TenneT's very first 2GW offshore platform kicks off",
+        "url": "https://windpowernl.com/2024/09/11/construction-of-tennets-very-first-2gw-offshore-platform-kicks-off/"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "ijmuiden-ver-gamma",
+    "name": "IJmuiden Ver Gamma",
+    "project": "IJmuiden Ver Gamma (TenneT 2 GW)",
+    "client": "TenneT NL",
+    "site_country": "Netherlands",
+    "type": "HVDC converter",
+    "capacity_mw": 2000,
+    "topside_t": 30000,
+    "epc": "GE Vernova / Seatrium",
+    "yards": [
+      {
+        "yard": "seatrium-tuas",
+        "role": "Topside fabrication"
+      },
+      {
+        "yard": "seatrium-batam",
+        "role": "Topside fabrication"
+      },
+      {
+        "yard": "heerema-vlissingen",
+        "role": "Jacket"
+      }
+    ],
+    "status": "Fabrication",
+    "sailaway": null,
+    "cod": 2029,
+    "confidence": "medium",
+    "notes": "Seatrium splits topside work across Singapore and Batam; exact split per platform not published.",
+    "sources": [
+      {
+        "date": "2026-06-10",
+        "title": "Seatrium Orders Six Liebherr Cranes for TenneT's 2 GW Dutch Offshore Grid Platforms",
+        "url": "https://www.offshorewind.biz/2026/06/10/seatrium-orders-six-liebherr-cranes-for-tennets-2-gw-dutch-offshore-grid-platforms"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "nederwiek-2",
+    "name": "Nederwiek 2 (Nederwiek Beta)",
+    "project": "Nederwiek 2 (TenneT 2 GW)",
+    "client": "TenneT NL",
+    "site_country": "Netherlands",
+    "type": "HVDC converter",
+    "capacity_mw": 2000,
+    "topside_t": 30000,
+    "epc": "GE Vernova / Seatrium",
+    "yards": [
+      {
+        "yard": "seatrium-tuas",
+        "role": "Topside fabrication"
+      },
+      {
+        "yard": "seatrium-batam",
+        "role": "Topside fabrication"
+      },
+      {
+        "yard": "heerema-vlissingen",
+        "role": "Jacket"
+      }
+    ],
+    "status": "Fabrication",
+    "sailaway": null,
+    "cod": 2029,
+    "confidence": "high",
+    "notes": "First steel cut February 2026, simultaneously in Singapore and Batam.",
+    "sources": [
+      {
+        "date": "2026-02",
+        "title": "Steel Cut for TenneT's Third 2 GW HVDC Platform – Nederwiek 2",
+        "url": "https://hvdcworld.com/news/steel-cut-for-tennets-third-2-gw-hvdc-platform---nederwiek-2"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "ijmuiden-ver-alpha",
+    "name": "IJmuiden Ver Alpha",
+    "project": "IJmuiden Ver Alpha (TenneT 2 GW)",
+    "client": "TenneT NL",
+    "site_country": "Netherlands",
+    "type": "HVDC converter",
+    "capacity_mw": 2000,
+    "topside_t": null,
+    "epc": "Hitachi Energy / L&T (replaced Petrofac, Oct 2025)",
+    "yards": [
+      {
+        "yard": "mmhe-pasir-gudang",
+        "role": "Topside fabrication (unconfirmed after Petrofac exit)"
+      }
+    ],
+    "status": "Fabrication",
+    "sailaway": null,
+    "cod": null,
+    "confidence": "low",
+    "notes": "MMHE was Petrofac's subcontractor (Nov 2023). Whether MMHE kept the work under Hitachi/L&T is not confirmed.",
+    "sources": [
+      {
+        "date": "2023-11-29",
+        "title": "Malaysian Fabrication Company Enters Offshore Wind Market with IJmuiden Ver Alpha Contract",
+        "url": "https://www.offshorewind.biz/2023/11/29/malaysian-fabrication-company-enters-offshore-wind-market-with-ijmuiden-ver-alpha-contract"
+      },
+      {
+        "date": "2025-10-28",
+        "title": "TenneT Terminates Contract with Petrofac; Hitachi Energy and New Partner to Continue",
+        "url": "https://windpowernl.com/2025/10/28/tennet-terminates-contract-with-petrofac-hitachi-energy-and-new-partner-to-continue-2gw-offshore-grid-projects/"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "nederwiek-1",
+    "name": "Nederwiek 1",
+    "project": "Nederwiek 1 (TenneT 2 GW)",
+    "client": "TenneT NL",
+    "site_country": "Netherlands",
+    "type": "HVDC converter",
+    "capacity_mw": 2000,
+    "topside_t": 30000,
+    "epc": "Hitachi Energy / L&T (replaced Petrofac, Oct 2025)",
+    "yards": [
+      {
+        "yard": "mmhe-pasir-gudang",
+        "role": "Topside fabrication (unconfirmed after Petrofac exit)"
+      }
+    ],
+    "status": "Fabrication",
+    "sailaway": "2028 (original plan)",
+    "cod": null,
+    "confidence": "low",
+    "notes": "MMHE subcontract: fabrication 2025–2028, topside ~30,000 t, jacket ~10,000 t. Status under new consortium unverified.",
+    "sources": [
+      {
+        "date": "2024-06-04",
+        "title": "Malaysian Contractor to Build Nederwiek 1 HVDC Offshore Platform",
+        "url": "https://www.offshorewind.biz/2024/06/04/malaysian-contractor-to-build-nederwiek-1-hvdc-offshore-platform"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "nederwiek-3",
+    "name": "Nederwiek 3",
+    "project": "Nederwiek 3 (TenneT 2 GW)",
+    "client": "TenneT NL",
+    "site_country": "Netherlands",
+    "type": "HVDC converter",
+    "capacity_mw": 2000,
+    "topside_t": null,
+    "epc": "Hitachi Energy / L&T",
+    "yards": [
+      {
+        "yard": "lt-kattupalli",
+        "role": "Topside (yard to be confirmed)"
+      }
+    ],
+    "status": "Contracted",
+    "sailaway": null,
+    "cod": null,
+    "confidence": "low",
+    "notes": "Part of the six-project Hitachi Energy / L&T framework signed July 2026.",
+    "sources": [
+      {
+        "date": "2026-07",
+        "title": "L&T Finalises 2 GW HVDC Framework With TenneT",
+        "url": "https://hvdcworld.com/news/lt-finalises-2-gw-hvdc-framework-with-tennet"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "doordewind-1",
+    "name": "Doordewind 1",
+    "project": "Doordewind 1 (TenneT 2 GW)",
+    "client": "TenneT NL",
+    "site_country": "Netherlands",
+    "type": "HVDC converter",
+    "capacity_mw": 2000,
+    "topside_t": null,
+    "epc": "Hitachi Energy / L&T",
+    "yards": [
+      {
+        "yard": "lt-kattupalli",
+        "role": "Topside (yard to be confirmed)"
+      }
+    ],
+    "status": "Contracted",
+    "sailaway": null,
+    "cod": null,
+    "confidence": "low",
+    "notes": "",
+    "sources": [
+      {
+        "date": "2026-07",
+        "title": "L&T Finalises 2 GW HVDC Framework With TenneT",
+        "url": "https://hvdcworld.com/news/lt-finalises-2-gw-hvdc-framework-with-tennet"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "doordewind-2",
+    "name": "Doordewind 2",
+    "project": "Doordewind 2 (TenneT 2 GW)",
+    "client": "TenneT NL",
+    "site_country": "Netherlands",
+    "type": "HVDC converter",
+    "capacity_mw": 2000,
+    "topside_t": null,
+    "epc": "Hitachi Energy / L&T",
+    "yards": [
+      {
+        "yard": "lt-kattupalli",
+        "role": "Topside (yard to be confirmed)"
+      }
+    ],
+    "status": "Contracted",
+    "sailaway": null,
+    "cod": null,
+    "confidence": "low",
+    "notes": "",
+    "sources": [
+      {
+        "date": "2026-07",
+        "title": "L&T Finalises 2 GW HVDC Framework With TenneT",
+        "url": "https://hvdcworld.com/news/lt-finalises-2-gw-hvdc-framework-with-tennet"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "lanwin5",
+    "name": "LanWin5",
+    "project": "LanWin5 (TenneT 2 GW)",
+    "client": "TenneT DE",
+    "site_country": "Germany",
+    "type": "HVDC converter",
+    "capacity_mw": 2000,
+    "topside_t": null,
+    "epc": "Hitachi Energy / L&T",
+    "yards": [
+      {
+        "yard": "lt-kattupalli",
+        "role": "Topside (yard to be confirmed)"
+      }
+    ],
+    "status": "Contracted",
+    "sailaway": null,
+    "cod": null,
+    "confidence": "low",
+    "notes": "",
+    "sources": [
+      {
+        "date": "2026-07",
+        "title": "L&T Finalises 2 GW HVDC Framework With TenneT",
+        "url": "https://hvdcworld.com/news/lt-finalises-2-gw-hvdc-framework-with-tennet"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "balwin4",
+    "name": "BalWin4",
+    "project": "BalWin4 (TenneT 2 GW)",
+    "client": "TenneT DE",
+    "site_country": "Germany",
+    "type": "HVDC converter",
+    "capacity_mw": 2000,
+    "topside_t": null,
+    "epc": "McDermott / GE Vernova",
+    "yards": [
+      {
+        "yard": "mcdermott-batam",
+        "role": "Topside fabrication"
+      }
+    ],
+    "status": "Fabrication",
+    "sailaway": null,
+    "cod": 2029,
+    "confidence": "high",
+    "notes": "McDermott started the BalWin4 topside mid-2025.",
+    "sources": [
+      {
+        "date": "2026-02-18",
+        "title": "McDermott Starts Work on Second 2 GW Offshore Platform for TenneT",
+        "url": "https://www.offshorewind.biz/2026/02/18/mcdermott-starts-work-on-second-2-gw-offshore-platform-for-tennet"
+      },
+      {
+        "date": null,
+        "title": "McDermott project page – BalWin4, LanWin1",
+        "url": "https://www.mcdermott.com/projects/tennet-2gw-portfolio-program-balwin4-lanwin1"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "lanwin1",
+    "name": "LanWin1",
+    "project": "LanWin1 (TenneT 2 GW)",
+    "client": "TenneT DE",
+    "site_country": "Germany",
+    "type": "HVDC converter",
+    "capacity_mw": 2000,
+    "topside_t": null,
+    "epc": "McDermott / GE Vernova",
+    "yards": [
+      {
+        "yard": "mcdermott-batam",
+        "role": "Topside fabrication"
+      }
+    ],
+    "status": "Fabrication",
+    "sailaway": null,
+    "cod": 2030,
+    "confidence": "high",
+    "notes": "Fabrication started February 2026.",
+    "sources": [
+      {
+        "date": "2026-02-18",
+        "title": "McDermott Starts Work on Second 2 GW Offshore Platform for TenneT",
+        "url": "https://www.offshorewind.biz/2026/02/18/mcdermott-starts-work-on-second-2-gw-offshore-platform-for-tennet"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "borwin6",
+    "name": "BorWin6 (BorWin kappa)",
+    "project": "BorWin6",
+    "client": "TenneT DE",
+    "site_country": "Germany",
+    "type": "HVDC converter",
+    "capacity_mw": 980,
+    "topside_t": 17000,
+    "epc": "McDermott / Hitachi Energy",
+    "yards": [
+      {
+        "yard": "mcdermott-batam",
+        "role": "Topside fabrication (yard inferred)"
+      },
+      {
+        "yard": "mcdermott-jebel-ali",
+        "role": "Jacket"
+      }
+    ],
+    "status": "Outfitting",
+    "sailaway": "Late 2026",
+    "cod": 2027,
+    "confidence": "medium",
+    "notes": "Jacket loaded out at Jebel Ali Feb 2026. Topside jack-up, weighing and skidded load-out planned later in 2026.",
+    "sources": [
+      {
+        "date": "2026-02-09",
+        "title": "Jacket Foundation for BorWin Kappa Offshore Converter Platform Loaded Out in UAE",
+        "url": "https://www.offshorewind.biz/2026/02/09/jacket-foundation-for-borwin-kappa-offshore-converter-platform-loaded-out-in-uae"
+      },
+      {
+        "date": "2026-02",
+        "title": "Mammoet: Jacket loadout milestone completed for BorWin6",
+        "url": "https://www.mammoet.com/news/jacket-loadout-milestone-completed-for-borwin6-offshore-hvdc-platform/"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "balwin3",
+    "name": "BalWin3",
+    "project": "BalWin3 (TenneT 2 GW)",
+    "client": "TenneT DE",
+    "site_country": "Germany",
+    "type": "HVDC converter",
+    "capacity_mw": 2000,
+    "topside_t": 24000,
+    "epc": "Siemens Energy / Dragados Offshore",
+    "yards": [
+      {
+        "yard": "dragados-algeciras",
+        "role": "Topside fabrication"
+      }
+    ],
+    "status": "Fabrication",
+    "sailaway": null,
+    "cod": null,
+    "confidence": "medium",
+    "notes": "One of two topsides planned at the new Algeciras yard from 2026.",
+    "sources": [
+      {
+        "date": null,
+        "title": "Dragados fact sheet – BalWin3, LanWin2, LanWin4",
+        "url": "https://dragadosoffshore.com/wp-content/uploads/2024/11/Fact_Sheet_BalWin3-LanWin2-LanWin4.pdf"
+      },
+      {
+        "date": null,
+        "title": "New shipyard for TenneT's German offshore platforms is being built in Spain",
+        "url": "https://www.tennet.eu/de-en/news/new-shipyard-tennets-german-offshore-platforms-being-built-spain"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "lanwin2",
+    "name": "LanWin2",
+    "project": "LanWin2 (TenneT 2 GW)",
+    "client": "TenneT DE",
+    "site_country": "Germany",
+    "type": "HVDC converter",
+    "capacity_mw": 2000,
+    "topside_t": 24000,
+    "epc": "Siemens Energy / Dragados Offshore",
+    "yards": [
+      {
+        "yard": "dragados-algeciras",
+        "role": "Topside fabrication"
+      }
+    ],
+    "status": "Fabrication",
+    "sailaway": null,
+    "cod": null,
+    "confidence": "high",
+    "notes": "Construction started May 2026 at Campamento with arrival of the upper grillage beams.",
+    "sources": [
+      {
+        "date": "2026-05-14",
+        "title": "Dragados Offshore begins construction of LanWin2 platforms in Campamento",
+        "url": "https://www.elestrechodigital.com/en/2026/05/14/dragados-offshore-inicia-en-campamento-la-construccion-de-plataformas-eolicas-marinas-para-el-proyecto-lanwin2-destinado-al-mar-del-norte"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "lanwin4",
+    "name": "LanWin4",
+    "project": "LanWin4 (TenneT 2 GW)",
+    "client": "TenneT DE",
+    "site_country": "Germany",
+    "type": "HVDC converter",
+    "capacity_mw": 2000,
+    "topside_t": 24000,
+    "epc": "Siemens Energy / Dragados Offshore",
+    "yards": [
+      {
+        "yard": "dragados-cadiz",
+        "role": "Topside fabrication"
+      }
+    ],
+    "status": "Fabrication",
+    "sailaway": null,
+    "cod": 2031,
+    "confidence": "medium",
+    "notes": "",
+    "sources": [
+      {
+        "date": null,
+        "title": "New shipyard for TenneT's German offshore platforms is being built in Spain",
+        "url": "https://www.tennet.eu/de-en/news/new-shipyard-tennets-german-offshore-platforms-being-built-spain"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "dolwin4",
+    "name": "DolWin4 (DolWin kappa)",
+    "project": "DolWin4",
+    "client": "Amprion",
+    "site_country": "Germany",
+    "type": "HVDC converter",
+    "capacity_mw": 900,
+    "topside_t": null,
+    "epc": "Siemens Energy / Dragados Offshore",
+    "yards": [
+      {
+        "yard": "dragados-cadiz",
+        "role": "Topside assembly"
+      },
+      {
+        "yard": "meyer-papenburg",
+        "role": "Steel modules"
+      }
+    ],
+    "status": "Fabrication",
+    "sailaway": null,
+    "cod": 2028,
+    "confidence": "medium",
+    "notes": "Meyer Werft component deliveries planned autumn 2024 – spring 2027.",
+    "sources": [
+      {
+        "date": "2023-11-22",
+        "title": "Amprion Picks Steel Contractor for Offshore Converter Platforms",
+        "url": "https://www.offshorewind.biz/2023/11/22/amprion-picks-steel-contractor-for-offshore-converter-platforms/"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "borwin4",
+    "name": "BorWin4",
+    "project": "BorWin4",
+    "client": "Amprion",
+    "site_country": "Germany",
+    "type": "HVDC converter",
+    "capacity_mw": 900,
+    "topside_t": null,
+    "epc": "Siemens Energy / Dragados Offshore",
+    "yards": [
+      {
+        "yard": "dragados-cadiz",
+        "role": "Topside assembly"
+      },
+      {
+        "yard": "meyer-papenburg",
+        "role": "Steel modules"
+      }
+    ],
+    "status": "Fabrication",
+    "sailaway": null,
+    "cod": 2028,
+    "confidence": "medium",
+    "notes": "",
+    "sources": [
+      {
+        "date": "2024-10-17",
+        "title": "Amprion Selects Owner's Engineer for BorWin4 & DolWin4 Converter Platforms",
+        "url": "https://www.offshorewind.biz/2024/10/17/amprion-selects-owners-engineer-for-borwin4-dolwin4-converter-platforms/"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "balwin1",
+    "name": "BalWin1",
+    "project": "BalWin1",
+    "client": "Amprion",
+    "site_country": "Germany",
+    "type": "HVDC converter",
+    "capacity_mw": 2000,
+    "topside_t": 15500,
+    "epc": "Siemens Energy / Dragados Offshore",
+    "yards": [
+      {
+        "yard": "dragados-cadiz",
+        "role": "Topside assembly"
+      },
+      {
+        "yard": "meyer-papenburg",
+        "role": "Steel modules"
+      }
+    ],
+    "status": "Fabrication",
+    "sailaway": null,
+    "cod": null,
+    "confidence": "medium",
+    "notes": "Steel weight from Meyer Werft (~15,500 t per platform).",
+    "sources": [
+      {
+        "date": null,
+        "title": "Amprion: start of production for BalWin1 and BalWin2",
+        "url": "https://www.amprion.net/Press/Press-Detail-Page_82432.html"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "balwin2",
+    "name": "BalWin2",
+    "project": "BalWin2",
+    "client": "Amprion",
+    "site_country": "Germany",
+    "type": "HVDC converter",
+    "capacity_mw": 2000,
+    "topside_t": 15500,
+    "epc": "Siemens Energy / Dragados Offshore",
+    "yards": [
+      {
+        "yard": "dragados-cadiz",
+        "role": "Topside assembly"
+      },
+      {
+        "yard": "meyer-papenburg",
+        "role": "Steel modules"
+      },
+      {
+        "yard": "aker-verdal",
+        "role": "Jacket"
+      }
+    ],
+    "status": "Fabrication",
+    "sailaway": null,
+    "cod": null,
+    "confidence": "medium",
+    "notes": "",
+    "sources": [
+      {
+        "date": null,
+        "title": "Amprion: start of production for BalWin1 and BalWin2",
+        "url": "https://www.amprion.net/Press/Press-Detail-Page_82432.html"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "lanwin3",
+    "name": "LanWin3",
+    "project": "LanWin3",
+    "client": "50Hertz",
+    "site_country": "Germany",
+    "type": "HVDC converter",
+    "capacity_mw": 2000,
+    "topside_t": null,
+    "epc": "Siemens Energy / NSORe",
+    "yards": [
+      {
+        "yard": "nsore-warnemunde",
+        "role": "Topside fabrication"
+      },
+      {
+        "yard": "smulders-vlissingen",
+        "role": "Jacket"
+      }
+    ],
+    "status": "Contracted",
+    "sailaway": null,
+    "cod": null,
+    "confidence": "high",
+    "notes": "Platform scope moved from Dragados (Spain) to NSORe in Germany, September 2026.",
+    "sources": [
+      {
+        "date": "2026-09-18",
+        "title": "Neptun Werft-Smulders JV Secures Second 2 GW Converter Platform Contract from 50Hertz",
+        "url": "https://www.offshorewind.biz/2026/09/18/neptun-werft-smulders-joint-venture-secures-second-2-gw-converter-platform-contract-from-50hertz"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "lanwin6",
+    "name": "LanWin6",
+    "project": "LanWin6",
+    "client": "50Hertz",
+    "site_country": "Germany",
+    "type": "HVDC converter",
+    "capacity_mw": 2000,
+    "topside_t": null,
+    "epc": "Siemens Energy / NSORe",
+    "yards": [
+      {
+        "yard": "nsore-warnemunde",
+        "role": "Topside fabrication (yard inferred)"
+      }
+    ],
+    "status": "Contracted",
+    "sailaway": null,
+    "cod": null,
+    "confidence": "medium",
+    "notes": "Awarded June 2026.",
+    "sources": [
+      {
+        "date": "2026-06",
+        "title": "50Hertz Picks Siemens Energy-NSORe Team for 2GW North Sea Converter Platform",
+        "url": "https://www.oedigital.com/amp/news/540397-50hertz-picks-siemens-energy-nsore-team-for-2gw-north-sea-converter-platform"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "ostwind4",
+    "name": "Ostwind 4",
+    "project": "Ostwind 4",
+    "client": "50Hertz",
+    "site_country": "Germany",
+    "type": "HVDC converter",
+    "capacity_mw": 2000,
+    "topside_t": null,
+    "epc": "GE Vernova / Drydocks World",
+    "yards": [
+      {
+        "yard": "drydocks-dubai",
+        "role": "Topside & jacket fabrication"
+      }
+    ],
+    "status": "Fabrication",
+    "sailaway": null,
+    "cod": 2031,
+    "confidence": "high",
+    "notes": "First steel cut 10 July 2026. Topside design by Iv. First Baltic Sea 2 GW HVDC platform.",
+    "sources": [
+      {
+        "date": "2026-07-16",
+        "title": "Iv to design topside Ostwind 4 offshore HVDC converter",
+        "url": "https://ocean-energyresources.com/2026/07/16/iv-to-design-topside-ostwind-4-offshore-hvdc-converter/"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "norfolk-vanguard-west",
+    "name": "Norfolk Vanguard West",
+    "project": "Norfolk Vanguard West",
+    "client": "RWE",
+    "site_country": "United Kingdom",
+    "type": "HVDC converter",
+    "capacity_mw": null,
+    "topside_t": null,
+    "epc": "Aker Solutions / Siemens Energy",
+    "yards": [
+      {
+        "yard": "drydocks-dubai",
+        "role": "Topside fabrication"
+      },
+      {
+        "yard": "aker-verdal",
+        "role": "Jacket"
+      }
+    ],
+    "status": "Fabrication",
+    "sailaway": null,
+    "cod": null,
+    "confidence": "medium",
+    "notes": "Steel cut April 2024 at Drydocks World.",
+    "sources": [
+      {
+        "date": "2024-04-18",
+        "title": "Drydocks World Cuts First Steel for Norfolk Vanguard Offshore Substations",
+        "url": "https://www.offshorewind.biz/2024/04/18/drydocks-world-cuts-first-steel-for-norfolk-vanguard-offshore-substations"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "norfolk-vanguard-east",
+    "name": "Norfolk Vanguard East",
+    "project": "Norfolk Vanguard East",
+    "client": "RWE",
+    "site_country": "United Kingdom",
+    "type": "HVDC converter",
+    "capacity_mw": null,
+    "topside_t": null,
+    "epc": "Aker Solutions / Siemens Energy",
+    "yards": [
+      {
+        "yard": "drydocks-dubai",
+        "role": "Topside fabrication"
+      },
+      {
+        "yard": "aker-verdal",
+        "role": "Jacket"
+      }
+    ],
+    "status": "Fabrication",
+    "sailaway": null,
+    "cod": null,
+    "confidence": "medium",
+    "notes": "",
+    "sources": [
+      {
+        "date": "2024-04-18",
+        "title": "Drydocks World Cuts First Steel for Norfolk Vanguard Offshore Substations",
+        "url": "https://www.offshorewind.biz/2024/04/18/drydocks-world-cuts-first-steel-for-norfolk-vanguard-offshore-substations"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "east-anglia-two",
+    "name": "East Anglia TWO OSS",
+    "project": "East Anglia TWO",
+    "client": "ScottishPower Renewables",
+    "site_country": "United Kingdom",
+    "type": "AC substation",
+    "capacity_mw": 960,
+    "topside_t": 5100,
+    "epc": "HSM Offshore Energy (Smulders HSM)",
+    "yards": [
+      {
+        "yard": "hsm-stormpolder",
+        "role": "Topside fabrication"
+      },
+      {
+        "yard": "smulders-wallsend",
+        "role": "Jacket"
+      }
+    ],
+    "status": "Fabrication",
+    "sailaway": "2027",
+    "cod": null,
+    "confidence": "high",
+    "notes": "Construction started March 2026. Topside ~58 x 35 x 30 m. Jacket install 2027, topside later in 2027.",
+    "sources": [
+      {
+        "date": "2026-03-26",
+        "title": "Smulders HSM Starts Building East Anglia Two Offshore Substation",
+        "url": "https://www.offshorewind.biz/2026/03/26/smulders-hsm-starts-building-east-anglia-two-offshore-substation/"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "hornsea-3-link-1",
+    "name": "Hornsea 3 Converter Link 1",
+    "project": "Hornsea 3",
+    "client": "Ørsted",
+    "site_country": "United Kingdom",
+    "type": "HVDC converter",
+    "capacity_mw": 1426,
+    "topside_t": null,
+    "epc": "Aibel / Hitachi Energy",
+    "yards": [
+      {
+        "yard": "aibel-laem-chabang",
+        "role": "Topside fabrication"
+      },
+      {
+        "yard": "aibel-haugesund",
+        "role": "Outfitting & commissioning"
+      }
+    ],
+    "status": "Installed",
+    "sailaway": "2026",
+    "cod": null,
+    "confidence": "high",
+    "notes": "Installed spring 2026.",
+    "sources": [
+      {
+        "date": "2026-05",
+        "title": "First Hornsea 3 Offshore Converter Station successfully installed",
+        "url": "https://orsted.co.uk/media/newsroom/news/2026/05/first-hornsea-3-offshore-converter-station-successfully-installed"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "hornsea-3-link-2",
+    "name": "Hornsea 3 Converter Link 2",
+    "project": "Hornsea 3",
+    "client": "Ørsted",
+    "site_country": "United Kingdom",
+    "type": "HVDC converter",
+    "capacity_mw": 1426,
+    "topside_t": null,
+    "epc": "Aibel / Hitachi Energy",
+    "yards": [
+      {
+        "yard": "aibel-laem-chabang",
+        "role": "Topside fabrication"
+      },
+      {
+        "yard": "aibel-haugesund",
+        "role": "Outfitting & commissioning"
+      }
+    ],
+    "status": "Installed",
+    "sailaway": "2026",
+    "cod": null,
+    "confidence": "high",
+    "notes": "Both Hornsea 3 converters reported installed by September 2026.",
+    "sources": [
+      {
+        "date": "2026-09-22",
+        "title": "Hornsea 3 Reaches Milestone as Ørsted Installs Both Converter Stations",
+        "url": "https://ecomagazine.com/news/industry/hornsea-3-reaches-milestone-as-orsted-installs-both-converter-stations"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "dolwin5",
+    "name": "DolWin5 (DolWin epsilon)",
+    "project": "DolWin5",
+    "client": "TenneT DE",
+    "site_country": "Germany",
+    "type": "HVDC converter",
+    "capacity_mw": 900,
+    "topside_t": null,
+    "epc": "Aibel / Seatrium (Hitachi Energy)",
+    "yards": [
+      {
+        "yard": "seatrium-tuas",
+        "role": "Topside fabrication"
+      },
+      {
+        "yard": "aibel-haugesund",
+        "role": "Outfitting & commissioning"
+      }
+    ],
+    "status": "Installed",
+    "sailaway": null,
+    "cod": 2026,
+    "confidence": "medium",
+    "notes": "Built in Singapore, completed in Haugesund, now offshore. Seatrium and Aibel in arbitration over the consortium agreement (Jan 2026).",
+    "sources": [
+      {
+        "date": "2026-01-23",
+        "title": "Seatrium, Aibel Launch Arbitration to Settle Differences on DolWin Epsilon Project",
+        "url": "https://www.offshorewind.biz/2026/01/23/seatrium-aibel-launch-arbitration-to-settle-differences-on-dolwin-epsilon-project/"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "gennaker-zingst",
+    "name": "OSS Zingst (Gennaker)",
+    "project": "Gennaker / Ostwind 3",
+    "client": "50Hertz / Skyborn",
+    "site_country": "Germany",
+    "type": "AC substation",
+    "capacity_mw": 450,
+    "topside_t": 4700,
+    "epc": "HSI JV (HSM, Smulders, Iv)",
+    "yards": [
+      {
+        "yard": "hsm-schiedam",
+        "role": "Topside fabrication"
+      }
+    ],
+    "status": "Installed",
+    "sailaway": "2026-10",
+    "cod": 2028,
+    "confidence": "high",
+    "notes": "Rolled out Feb 2026; sailed from Schiedam October 2026. Allseas Pioneering Spirit installs.",
+    "sources": [
+      {
+        "date": "2026-10-09",
+        "title": "Topsides and jackets for two offshore substations depart for the German Baltic Sea",
+        "url": "https://www.windtech-international.com/projects-and-contracts/topsides-and-jackets-for-two-offshore-substations-depart-for-the-german-baltic-sea"
+      },
+      {
+        "date": "2026-02-02",
+        "title": "Roll Out Zingst Offshore Substation Topside for 50Hertz",
+        "url": "https://www.smulders.com/en/news-and-media/news/roll-out-zingst-offshore-substation-oss-topside-for-50hertz/"
+      },
+      {
+        "date": "2026-10-22",
+        "title": "Gennaker offshore substations installed in Baltic Sea",
+        "url": "https://www.renews.biz/offshore-wind/gennaker-offshore-substations-installed-in-baltic-sea/"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "gennaker-darss",
+    "name": "OSS Darß (Gennaker)",
+    "project": "Gennaker / Ostwind 3",
+    "client": "50Hertz / Skyborn",
+    "site_country": "Germany",
+    "type": "AC substation",
+    "capacity_mw": 450,
+    "topside_t": null,
+    "epc": "HSI JV (HSM, Smulders, Iv)",
+    "yards": [
+      {
+        "yard": "smulders-vlissingen",
+        "role": "Topside fabrication"
+      }
+    ],
+    "status": "Installed",
+    "sailaway": "2026-10",
+    "cod": 2028,
+    "confidence": "high",
+    "notes": "Sailed from Vlissingen October 2026.",
+    "sources": [
+      {
+        "date": "2026-09-21",
+        "title": "Gennaker Offshore Substation Topsides Loaded Out Ahead of Sail-Away",
+        "url": "https://www.offshorewind.biz/2026/09/21/gennaker-offshore-substation-topsides-loaded-out-ahead-of-sail-away"
+      },
+      {
+        "date": "2026-10-22",
+        "title": "Gennaker offshore substations installed in Baltic Sea",
+        "url": "https://www.renews.biz/offshore-wind/gennaker-offshore-substations-installed-in-baltic-sea/"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "jasmund-windanker",
+    "name": "OSS Jasmund (Windanker)",
+    "project": "Windanker",
+    "client": "50Hertz / Iberdrola",
+    "site_country": "Germany",
+    "type": "AC substation",
+    "capacity_mw": 315,
+    "topside_t": 4500,
+    "epc": "HSI JV (HSM, Smulders, Iv)",
+    "yards": [
+      {
+        "yard": "hsm-stormpolder",
+        "role": "Topside fabrication"
+      },
+      {
+        "yard": "smulders-vlissingen",
+        "role": "Jacket"
+      }
+    ],
+    "status": "Installed",
+    "sailaway": "2025-12",
+    "cod": 2026,
+    "confidence": "high",
+    "notes": "Installed January 2026 by Heerema.",
+    "sources": [
+      {
+        "date": "2025-12-05",
+        "title": "Offshore Substation for Windanker Project En Route to Baltic Sea Site",
+        "url": "https://www.offshorewind.biz/2025/12/05/offshore-substation-for-windanker-project-en-route-to-baltic-sea-site"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "baltyk-2",
+    "name": "Bałtyk 2 OSS",
+    "project": "Bałtyk 2",
+    "client": "Equinor / Polenergia",
+    "site_country": "Poland",
+    "type": "AC substation",
+    "capacity_mw": 720,
+    "topside_t": 3700,
+    "epc": "Smulders",
+    "yards": [
+      {
+        "yard": "smulders-vlissingen",
+        "role": "Topside fabrication"
+      },
+      {
+        "yard": "smulders-wallsend",
+        "role": "Jacket"
+      }
+    ],
+    "status": "Outfitting",
+    "sailaway": null,
+    "cod": null,
+    "confidence": "high",
+    "notes": "",
+    "sources": [
+      {
+        "date": null,
+        "title": "Bałtyk 2 & 3 gain momentum as offshore installation phase approaches",
+        "url": "https://www.polenergia.pl/en/baltic-2-3-gain-momentum-as-offshore-installation-phase-approaches/"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "baltyk-3",
+    "name": "Bałtyk 3 OSS",
+    "project": "Bałtyk 3",
+    "client": "Equinor / Polenergia",
+    "site_country": "Poland",
+    "type": "AC substation",
+    "capacity_mw": 720,
+    "topside_t": 3700,
+    "epc": "Smulders",
+    "yards": [
+      {
+        "yard": "smulders-vlissingen",
+        "role": "Topside fabrication"
+      },
+      {
+        "yard": "smulders-wallsend",
+        "role": "Jacket"
+      }
+    ],
+    "status": "Outfitting",
+    "sailaway": null,
+    "cod": null,
+    "confidence": "high",
+    "notes": "Topside moved out of the hall to the yard, April 2026.",
+    "sources": [
+      {
+        "date": "2026-04-16",
+        "title": "Bałtyk 3 topside moves to the next phase",
+        "url": "https://ocean-energyresources.com/2026/04/16/baltyk-3-topside-moves-to-the-next-phase/"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "baltica-2",
+    "name": "Baltica 2 OSS (4 units)",
+    "project": "Baltica 2",
+    "client": "PGE / Ørsted",
+    "site_country": "Poland",
+    "type": "AC substation",
+    "capacity_mw": 1500,
+    "topside_t": null,
+    "epc": "Semco Maritime / PTSC M&C",
+    "yards": [
+      {
+        "yard": "ptsc-vungtau",
+        "role": "Topside fabrication"
+      }
+    ],
+    "status": "Sailed away",
+    "sailaway": "2026-09",
+    "cod": null,
+    "confidence": "high",
+    "notes": "Four 375 MW substations; first OSS delivery from Vietnam to Europe. Seaway7 installs.",
+    "sources": [
+      {
+        "date": "2026-09-14",
+        "title": "Four Baltica 2 Offshore Substations Set Sail from Vietnam to Poland",
+        "url": "https://www.offshorewind.biz/2026/09/14/four-baltica-2-offshore-substations-set-sail-from-vietnam-to-poland"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "formosa-4",
+    "name": "Formosa 4 OSS",
+    "project": "Formosa 4",
+    "client": "Synera Renewable Energy",
+    "site_country": "Taiwan",
+    "type": "AC substation",
+    "capacity_mw": null,
+    "topside_t": null,
+    "epc": "Semco Maritime / PTSC M&C",
+    "yards": [
+      {
+        "yard": "ptsc-vungtau",
+        "role": "Topside & jacket fabrication"
+      }
+    ],
+    "status": "Fabrication",
+    "sailaway": "End 2027",
+    "cod": null,
+    "confidence": "high",
+    "notes": "First steel cut January 2026.",
+    "sources": [
+      {
+        "date": "2026-01-29",
+        "title": "Construction of Formosa 4 Offshore Substation Starts in Vietnam",
+        "url": "https://www.offshorewind.biz/2026/01/29/construction-of-formosa-4-offshore-substation-starts-in-vietnam/"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "rte-bretagne-sud",
+    "name": "Bretagne Sud OSS",
+    "project": "Bretagne Sud (RTE)",
+    "client": "RTE",
+    "site_country": "France",
+    "type": "AC substation",
+    "capacity_mw": null,
+    "topside_t": 5000,
+    "epc": "Smulders (Eiffage)",
+    "yards": [
+      {
+        "yard": "smulders-vlissingen",
+        "role": "Topside assembly"
+      }
+    ],
+    "status": "Contracted",
+    "sailaway": null,
+    "cod": null,
+    "confidence": "high",
+    "notes": "One of three RTE AC substations (>€1.5bn, Sept 2025). Jackets assembled at Fos-sur-Mer.",
+    "sources": [
+      {
+        "date": "2025-09-30",
+        "title": "Eiffage Wins €1.5 Billion Contract for French Offshore Substations",
+        "url": "https://www.offshorewind.biz/2025/09/30/eiffage-wins-e1-5-billion-contract-for-french-offshore-substations/"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "rte-narbonnaise",
+    "name": "Narbonnaise Sud-Hérault OSS",
+    "project": "Narbonnaise Sud-Hérault (RTE)",
+    "client": "RTE",
+    "site_country": "France",
+    "type": "AC substation",
+    "capacity_mw": null,
+    "topside_t": 5000,
+    "epc": "Smulders (Eiffage)",
+    "yards": [
+      {
+        "yard": "smulders-vlissingen",
+        "role": "Topside assembly"
+      }
+    ],
+    "status": "Contracted",
+    "sailaway": null,
+    "cod": null,
+    "confidence": "high",
+    "notes": "",
+    "sources": [
+      {
+        "date": "2025-09-30",
+        "title": "Eiffage Wins €1.5 Billion Contract for French Offshore Substations",
+        "url": "https://www.offshorewind.biz/2025/09/30/eiffage-wins-e1-5-billion-contract-for-french-offshore-substations/"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "rte-golfe-de-fos",
+    "name": "Golfe de Fos OSS",
+    "project": "Golfe de Fos (RTE)",
+    "client": "RTE",
+    "site_country": "France",
+    "type": "AC substation",
+    "capacity_mw": null,
+    "topside_t": 5000,
+    "epc": "Smulders (Eiffage)",
+    "yards": [
+      {
+        "yard": "smulders-vlissingen",
+        "role": "Topside assembly"
+      }
+    ],
+    "status": "Contracted",
+    "sailaway": null,
+    "cod": null,
+    "confidence": "high",
+    "notes": "",
+    "sources": [
+      {
+        "date": "2025-09-30",
+        "title": "Eiffage Wins €1.5 Billion Contract for French Offshore Substations",
+        "url": "https://www.offshorewind.biz/2025/09/30/eiffage-wins-e1-5-billion-contract-for-french-offshore-substations/"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "rte-dunkerque",
+    "name": "Dunkerque OSS",
+    "project": "Dunkerque (RTE)",
+    "client": "RTE",
+    "site_country": "France",
+    "type": "AC substation",
+    "capacity_mw": 600,
+    "topside_t": null,
+    "epc": "Chantiers de l'Atlantique",
+    "yards": [
+      {
+        "yard": "chantiers-saint-nazaire",
+        "role": "Topside assembly"
+      }
+    ],
+    "status": "Contracted",
+    "sailaway": null,
+    "cod": null,
+    "confidence": "medium",
+    "notes": "~€320m EPCI; foundation made in Fos-sur-Mer.",
+    "sources": [
+      {
+        "date": "2024-12-05",
+        "title": "Chantiers de l'Atlantique to Build Substation for 600 MW French Offshore Wind Farm",
+        "url": "https://www.offshorewind.biz/2024/12/05/chantiers-de-latlantique-to-build-substation-for-600-mw-french-offshore-wind-farm"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "rte-oleron",
+    "name": "Oléron (AO7) HVDC platform",
+    "project": "Oléron AO7 (RTE)",
+    "client": "RTE",
+    "site_country": "France",
+    "type": "HVDC converter",
+    "capacity_mw": null,
+    "topside_t": null,
+    "epc": "Hitachi Energy / Chantiers de l'Atlantique",
+    "yards": [
+      {
+        "yard": "chantiers-saint-nazaire",
+        "role": "Topside"
+      }
+    ],
+    "status": "Contracted",
+    "sailaway": null,
+    "cod": null,
+    "confidence": "low",
+    "notes": "Contract signing announced 2024; current status to verify.",
+    "sources": [
+      {
+        "date": "2024-04-29",
+        "title": "Hitachi, Chantiers de l'Atlantique to Seal French Offshore Substation Contract",
+        "url": "https://www.offshorewind.biz/2024/04/29/hitachi-chantiers-de-latlantique-to-seal-french-offshore-substation-contract/"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "rte-centre-manche-2",
+    "name": "Centre Manche 2 (AO8) HVDC platform",
+    "project": "Centre Manche 2 AO8 (RTE)",
+    "client": "RTE",
+    "site_country": "France",
+    "type": "HVDC converter",
+    "capacity_mw": null,
+    "topside_t": null,
+    "epc": "Hitachi Energy / Chantiers de l'Atlantique",
+    "yards": [
+      {
+        "yard": "chantiers-saint-nazaire",
+        "role": "Topside"
+      }
+    ],
+    "status": "Contracted",
+    "sailaway": null,
+    "cod": null,
+    "confidence": "low",
+    "notes": "Contract signing announced 2024; current status to verify.",
+    "sources": [
+      {
+        "date": "2024-04-29",
+        "title": "Hitachi, Chantiers de l'Atlantique to Seal French Offshore Substation Contract",
+        "url": "https://www.offshorewind.biz/2024/04/29/hitachi-chantiers-de-latlantique-to-seal-french-offshore-substation-contract/"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "taean",
+    "name": "Taean OSS",
+    "project": "Taean (500 MW)",
+    "client": "Vena Energy / CIP / Korea Western Power",
+    "site_country": "South Korea",
+    "type": "AC substation",
+    "capacity_mw": 500,
+    "topside_t": null,
+    "epc": "HD Hyundai Heavy Industries",
+    "yards": [
+      {
+        "yard": "hhi-ulsan",
+        "role": "Topside fabrication (yard inferred)"
+      }
+    ],
+    "status": "Contracted",
+    "sailaway": null,
+    "cod": null,
+    "confidence": "medium",
+    "notes": "EPCI awarded October 2026.",
+    "sources": [
+      {
+        "date": "2026-10-02",
+        "title": "HD Hyundai Heavy Industries to Build 500MW-Class Offshore Substation in Taean",
+        "url": "https://www.asiae.co.kr/en/article/2026100209124596196"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "leting-yuetuo",
+    "name": "Leting Yuetuo Island Ph. I OSS",
+    "project": "Guodian Tangshan Leting Yuetuo Island Ph. I",
+    "client": "Guodian (CHN Energy)",
+    "site_country": "China",
+    "type": "AC substation",
+    "capacity_mw": null,
+    "topside_t": 1700,
+    "epc": "ZPMC",
+    "yards": [
+      {
+        "yard": "zpmc-shanghai",
+        "role": "Topside & jacket fabrication"
+      }
+    ],
+    "status": "Sailed away",
+    "sailaway": "2026-08",
+    "cod": null,
+    "confidence": "medium",
+    "notes": "Lightweight integrated topside, 45 x 38 x 23 m.",
+    "sources": [
+      {
+        "date": "2026-08",
+        "title": "ZPMC ships topside module for China's first lightweight integrated offshore substation",
+        "url": "https://www.webdisclosure.com/press-release/zpmc-etr-zpmc-ships-topside-module-for-chinas-first-lightweight-integrated-offshore-substation-JCDl3p6gRX0"
+      }
+    ],
+    "updated": "2026-10-23"
+  },
+  {
+    "id": "sunrise-wind",
+    "name": "Sunrise Wind converter",
+    "project": "Sunrise Wind",
+    "client": "Ørsted",
+    "site_country": "United States",
+    "type": "HVDC converter",
+    "capacity_mw": 924,
+    "topside_t": null,
+    "epc": "Aker Solutions / Siemens Energy",
+    "yards": [
+      {
+        "yard": "aker-stord",
+        "role": "Topside completion"
+      }
+    ],
+    "status": "Installed",
+    "sailaway": null,
+    "cod": null,
+    "confidence": "low",
+    "notes": "First US HVDC offshore converter. Fabrication site and current status need verification.",
+    "sources": [
+      {
+        "date": "2021-10-27",
+        "title": "Sunrise Wind First US Offshore Wind Project to Use HVDC Transmission Technology",
+        "url": "https://www.offshorewind.biz/2021/10/27/sunrise-wind-first-us-offshore-wind-project-to-use-hvdc-transmission-technology/"
+      }
+    ],
+    "updated": "2026-10-23"
+  }
+]

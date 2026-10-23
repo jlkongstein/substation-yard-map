@@ -1,0 +1,21 @@
+{
+  "last_updated": "2026-10-23",
+  "changelog": [
+    {
+      "date": "2026-10-23",
+      "summary": "Initial dataset: 44 platforms across 24 yards, seeded from trade-press research.",
+      "changes": [
+        {
+          "id": "gennaker-zingst",
+          "description": "Topside installed offshore in the Baltic Sea by Allseas (Pioneering Spirit).",
+          "url": "https://www.renews.biz/offshore-wind/gennaker-offshore-substations-installed-in-baltic-sea/"
+        },
+        {
+          "id": "gennaker-darss",
+          "description": "Topside installed offshore in the Baltic Sea by Allseas (Pioneering Spirit).",
+          "url": "https://www.renews.biz/offshore-wind/gennaker-offshore-substations-installed-in-baltic-sea/"
+        }
+      ]
+    }
+  ]
+}

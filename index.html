@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Substation Yard Map</title>
+  <meta name="description" content="Map of yards building offshore wind substation and converter topsides, updated weekly from industry news.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <h1>Substation Yard Map</h1>
+      <span class="sub" id="stats">Loading…</span>
+    </div>
+    <button class="btn ghost" id="newsBtn" type="button">What's new</button>
+    <button class="btn ghost only-mobile" id="listToggle" type="button">List</button>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="controls">
+        <input id="search" type="search" placeholder="Search platform, project, yard, contractor…" autocomplete="off">
+        <div class="row">
+          <label>Sort
+            <select id="sort">
+              <option value="news">Latest news</option>
+              <option value="status">Status</option>
+              <option value="name">Name</option>
+              <option value="yard">Yard</option>
+              <option value="client">Client</option>
+              <option value="capacity">Capacity (MW)</option>
+              <option value="weight">Topside weight</option>
+              <option value="cod">Expected COD</option>
+            </select>
+          </label>
+          <label>Type
+            <select id="type">
+              <option value="">All</option>
+              <option value="HVDC converter">HVDC converter</option>
+              <option value="AC substation">AC substation</option>
+            </select>
+          </label>
+        </div>
+        <div class="chips" id="statusChips"></div>
+        <label class="check"><input type="checkbox" id="showJackets"> Show jacket-only yards</label>
+        <div class="tabs" role="tablist">
+          <button role="tab" class="tab active" data-tab="platforms" type="button">Platforms <span id="pCount"></span></button>
+          <button role="tab" class="tab" data-tab="yards" type="button">Yards <span id="yCount"></span></button>
+        </div>
+      </div>
+      <ul class="list" id="list"></ul>
+    </aside>
+
+    <section class="mapwrap">
+      <div id="map"></div>
+      <div class="legend" id="legend"></div>
+    </section>
+
+    <aside class="detail" id="detail" hidden>
+      <button class="close" id="detailClose" type="button" aria-label="Close">×</button>
+      <div id="detailBody"></div>
+    </aside>
+  </main>
+
+  <dialog id="newsDialog">
+    <form method="dialog"><button class="close" aria-label="Close">×</button></form>
+    <h2>What's new</h2>
+    <div id="newsBody"></div>
+  </dialog>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
