@@ -23,7 +23,7 @@ const fmtNum = (n) => (n == null ? "–" : n.toLocaleString("en-GB"));
 const latestNews = (p) => (p.sources || []).map((s) => s.date || "").sort().pop() || "";
 const isTopsideRole = (role) => !/^jacket$/i.test(role);
 
-let map, markers = new Map();
+let map, cluster, markers = new Map();
 
 async function load() {
   const get = (f) => fetch(`data/${f}?v=${Date.now()}`).then((r) => r.json());
@@ -42,6 +42,24 @@ function initMap() {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     maxZoom: 19, className: "basemap",
   }).addTo(map);
+
+  // Yards that would overlap merge into one ball (numbers summed) and split again as you zoom in.
+  cluster = L.markerClusterGroup({
+    maxClusterRadius: 48,
+    showCoverageOnHover: false,
+    spiderfyOnMaxZoom: true,
+    iconCreateFunction: (c) => {
+      const kids = c.getAllChildMarkers().map((m) => m.options.yard);
+      const topside = kids.filter((k) => !k.jacket);
+      const n = (topside.length ? topside : kids).reduce((sum, k) => sum + k.n, 0);
+      const color = topside.length ? statusColor(STATUSES[Math.min(...topside.map((k) => k.statusIdx))]) : css("--jacket");
+      return yardIcon(n, color, { jacket: !topside.length, group: kids.length });
+    },
+  }).addTo(map);
+  cluster.on("clustermouseover", (e) => {
+    const names = e.layer.getAllChildMarkers().map((m) => m.options.title).sort();
+    e.layer.bindTooltip(`${names.length} yards: ${names.join(", ")}`, { direction: "top" }).openTooltip();
+  });
 
   $("legend").innerHTML =
     STATUSES.map((s) => `<span><i style="background:${statusColor(s)}"></i>${s}</span>`).join("") +
@@ -136,8 +154,17 @@ function render() {
   renderList(vis, idx);
 }
 
+function yardIcon(n, color, { jacket = false, group = 0 } = {}) {
+  const size = 22 + Math.min(n, 8) * 4 + (group ? 6 : 0);
+  return L.divIcon({
+    className: "",
+    html: `<div class="yard-marker${jacket ? " jacket" : ""}${group ? " group" : ""}" style="width:${size}px;height:${size}px;background:${color}">${n || ""}</div>`,
+    iconSize: [size, size], iconAnchor: [size / 2, size / 2], popupAnchor: [0, -size / 2],
+  });
+}
+
 function renderMarkers(idx) {
-  markers.forEach((m) => m.remove());
+  cluster.clearLayers();
   markers.clear();
   for (const y of state.yards) {
     const items = idx.get(y.id) || [];
@@ -149,19 +176,16 @@ function renderMarkers(idx) {
 
     // Colour by the least advanced active topside (most "in-yard" work).
     const active = topsideItems.map((i) => STATUSES.indexOf(i.p.status)).filter((i) => i >= 0);
-    const color = jacketOnly ? css("--jacket") : statusColor(STATUSES[Math.min(...active)]);
+    const statusIdx = active.length ? Math.min(...active) : STATUSES.length - 1;
+    const color = jacketOnly ? css("--jacket") : statusColor(STATUSES[statusIdx]);
     const n = jacketOnly ? items.length : topsideItems.length;
-    const size = 22 + Math.min(n, 8) * 4;
-    const icon = L.divIcon({
-      className: "",
-      html: `<div class="yard-marker${jacketOnly ? " jacket" : ""}" style="width:${size}px;height:${size}px;background:${color}">${n || ""}</div>`,
-      iconSize: [size, size], iconAnchor: [size / 2, size / 2], popupAnchor: [0, -size / 2],
-    });
-    const mk = L.marker([y.lat, y.lon], { icon, title: y.name, riseOnHover: true })
-      .bindPopup(() => yardPopup(y, items), { maxWidth: 320 })
-      .addTo(map);
+    const mk = L.marker([y.lat, y.lon], {
+      icon: yardIcon(n, color, { jacket: jacketOnly }), title: y.name, riseOnHover: true,
+      yard: { n, statusIdx, jacket: jacketOnly },
+    }).bindPopup(() => yardPopup(y, items), { maxWidth: 320 });
     markers.set(y.id, mk);
   }
+  cluster.addLayers([...markers.values()]);
 }
 
 function yardPopup(y, items) {
@@ -225,9 +249,17 @@ $("list").addEventListener("click", (e) => {
 
 function focusYard(id, zoom = 8) {
   const y = state.yardById.get(id); if (!y) return;
-  map.flyTo([y.lat, y.lon], Math.max(map.getZoom(), zoom), { duration: 0.8 });
   const mk = markers.get(id);
-  if (mk) setTimeout(() => mk.openPopup(), 850);
+  if (!mk) { map.setView([y.lat, y.lon], Math.max(map.getZoom(), zoom)); return; }
+  // Zoom in just far enough for the yard to split out of any merged ball, then open its popup.
+  // markercluster keeps the deepest cluster holding the marker in __parent; one level below it the yard stands alone.
+  const parentZoom = mk.__parent && mk.__parent._zoom != null ? mk.__parent._zoom : -1;
+  const target = Math.max(map.getZoom(), zoom, parentZoom + 1);
+  const open = () => (cluster.getVisibleParent(mk) === mk ? mk.openPopup() : cluster.zoomToShowLayer(mk, () => mk.openPopup()));
+  if (map.getZoom() !== target || !map.getBounds().contains(mk.getLatLng())) {
+    map.once("moveend", () => setTimeout(open, 300));
+    map.setView([y.lat, y.lon], target);
+  } else open();
 }
 
 function showPlatform(id, { fly = true } = {}) {

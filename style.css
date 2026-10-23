@@ -130,6 +130,8 @@ a { color: var(--accent); }
   box-shadow: 0 1px 6px rgba(0,0,0,.35);
 }
 .yard-marker.jacket { border-style: dashed; }
+/* Merged ball: a second ring shows it stands for several yards. */
+.yard-marker.group { box-shadow: 0 0 0 3px rgba(255,255,255,.55), 0 0 0 5px rgba(0,0,0,.25), 0 1px 6px rgba(0,0,0,.35); }
 
 .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: var(--panel); color: var(--text); }
 .leaflet-popup-content { margin: 12px 14px; min-width: 220px; }
