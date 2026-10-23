@@ -71,6 +71,12 @@ function initMap() {
     e.layer.bindTooltip(`${names.length} yards · ${ps.length} platforms${gw ? ` · ${gw}` : ""}<br>${names.map(esc).join("<br>")}`,
       { direction: "top" }).openTooltip();
   });
+  // Close popups on pointerup as well as click: on touch screens the click on the small × is
+  // sometimes swallowed (e.g. while the map is still settling after a zoom).
+  map.on("popupopen", (e) => {
+    const btn = e.popup.getElement()?.querySelector(".leaflet-popup-close-button");
+    btn?.addEventListener("pointerup", (ev) => { ev.preventDefault(); ev.stopPropagation(); e.popup.close(); });
+  });
   sitesLayer = L.layerGroup().addTo(map);
   routeLayer = L.layerGroup().addTo(map);
 
@@ -392,9 +398,14 @@ function drawVoyage(p) {
   const yards = voyageStops(p);
   const site = p.site;
   const siteIcon = L.divIcon({ className: "", html: '<div class="site-marker"></div>', iconSize: [22, 22], iconAnchor: [11, 11] });
+  // A small closable label (not a permanent tooltip, which can't be dismissed). Tap the diamond to bring it back.
+  const label = L.popup({ autoClose: false, closeOnClick: false, autoPan: false, className: "site-pop", offset: [0, -6] })
+    .setLatLng([site.lat, site.lon])
+    .setContent(`<strong>${esc(p.name)}</strong><br>Installation site: ${esc(site.name)}`);
   L.marker([site.lat, site.lon], { icon: siteIcon, zIndexOffset: 1000 })
-    .bindTooltip(`<strong>${esc(p.name)}</strong><br>Installation site: ${esc(site.name)}`, { direction: "top", offset: [0, -10], permanent: true, className: "site-tip" })
+    .on("click", () => label.openOn(map))
     .addTo(routeLayer);
+  routeLayer.addLayer(label);
   if (!yards.length) return null;
 
   const r = SeaRoute.route([...yards, site]);

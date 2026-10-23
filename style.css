@@ -147,7 +147,13 @@ a { color: var(--accent); }
 
 .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: var(--panel); color: var(--text); }
 .leaflet-popup-content { margin: 12px 14px; min-width: 220px; }
-.pop h3 { margin: 0 0 2px; font-size: 14px; }
+.pop h3 { margin: 0 0 2px; font-size: 14px; padding-right: 26px; }
+/* Bigger, easier-to-hit close button on all popups. */
+.leaflet-container a.leaflet-popup-close-button {
+  width: 32px; height: 32px; font: 22px/30px system-ui, sans-serif; top: 2px; right: 2px; color: var(--muted);
+}
+.leaflet-container a.leaflet-popup-close-button:hover { color: var(--text); }
+.site-pop .leaflet-popup-content { margin: 8px 34px 8px 10px; min-width: 0; font-size: 12px; }
 .pop .m { color: var(--muted); font-size: 12px; margin-bottom: 6px; }
 .pop ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; }
 .pop li a { cursor: pointer; text-decoration: none; display: flex; justify-content: space-between; gap: 8px; color: var(--text); }
