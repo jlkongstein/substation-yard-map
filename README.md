@@ -11,7 +11,8 @@ Jacket-only yards are hidden by default; there's a checkbox to show them.
 |---|---|
 | `index.html`, `app.js`, `style.css` | The site (Leaflet map, no build step) |
 | `data/yards.json` | Yards with coordinates |
-| `data/platforms.json` | Platforms: status, yards and roles, contractor, capacity, weight, dates, sources |
+| `data/platforms.json` | Platforms: status, yards and roles, contractor, capacity, weight, dates, installation `site` (lat/lon), sources |
+| `sea.js` | Sea-lane network used to draw the likely sailing route from yard(s) to installation site |
 | `data/meta.json` | Last-updated date and the weekly changelog shown under "What's new" |
 | `data/news_seen.json` | Articles already scanned, so weekly runs don't repeat them |
 | `updater/news_scan.py` | Free weekly news scan (RSS + name matching, no AI, standard library only) |
@@ -54,6 +55,15 @@ status.
 the pencil icon. Copy an existing entry as a template.
 
 Manual run: `python updater/news_scan.py --dry-run` prints the report without changing anything.
+
+## Installation sites and sailing routes
+
+Each platform has a `site` with an approximate position of the wind-farm or grid-connection area.
+When you select a platform, the map marks that site and draws the likely voyage: steel or module yard,
+then fabrication yard, then outfitting yard, then the site. The route is the shortest path through a
+network of shipping lanes and straits in `sea.js`. Voyages from Asia or the Gulf to Europe are assumed
+to go round the Cape of Good Hope, avoiding the Red Sea. Routes are calculated in the browser, so they
+follow automatically whenever a platform's yards or site change.
 
 ## Data confidence
 

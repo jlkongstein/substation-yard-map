@@ -39,7 +39,13 @@
     "updated": "2026-10-23",
     "aliases": [
       "IJmuiden Ver Beta"
-    ]
+    ],
+    "site": {
+      "name": "IJmuiden Ver Beta, Dutch North Sea",
+      "lat": 52.72,
+      "lon": 3.55,
+      "approx": true
+    }
   },
   {
     "id": "ijmuiden-ver-gamma",
@@ -80,7 +86,13 @@
     "updated": "2026-10-23",
     "aliases": [
       "IJmuiden Ver Gamma"
-    ]
+    ],
+    "site": {
+      "name": "IJmuiden Ver Gamma, Dutch North Sea",
+      "lat": 52.95,
+      "lon": 3.6,
+      "approx": true
+    }
   },
   {
     "id": "nederwiek-2",
@@ -118,7 +130,13 @@
         "url": "https://hvdcworld.com/news/steel-cut-for-tennets-third-2-gw-hvdc-platform---nederwiek-2"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "site": {
+      "name": "Nederwiek 2, Dutch North Sea",
+      "lat": 53.7,
+      "lon": 3.65,
+      "approx": true
+    }
   },
   {
     "id": "ijmuiden-ver-alpha",
@@ -156,7 +174,13 @@
     "updated": "2026-10-23",
     "aliases": [
       "IJmuiden Ver Alpha"
-    ]
+    ],
+    "site": {
+      "name": "IJmuiden Ver Alpha, Dutch North Sea",
+      "lat": 52.8,
+      "lon": 3.75,
+      "approx": true
+    }
   },
   {
     "id": "nederwiek-1",
@@ -186,7 +210,13 @@
         "url": "https://www.offshorewind.biz/2024/06/04/malaysian-contractor-to-build-nederwiek-1-hvdc-offshore-platform"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "site": {
+      "name": "Nederwiek 1, Dutch North Sea",
+      "lat": 53.55,
+      "lon": 3.85,
+      "approx": true
+    }
   },
   {
     "id": "nederwiek-3",
@@ -216,7 +246,13 @@
         "url": "https://hvdcworld.com/news/lt-finalises-2-gw-hvdc-framework-with-tennet"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "site": {
+      "name": "Nederwiek 3, Dutch North Sea",
+      "lat": 53.82,
+      "lon": 3.95,
+      "approx": true
+    }
   },
   {
     "id": "doordewind-1",
@@ -246,7 +282,13 @@
         "url": "https://hvdcworld.com/news/lt-finalises-2-gw-hvdc-framework-with-tennet"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "site": {
+      "name": "Doordewind 1, Dutch North Sea",
+      "lat": 54.05,
+      "lon": 5.75,
+      "approx": true
+    }
   },
   {
     "id": "doordewind-2",
@@ -276,7 +318,13 @@
         "url": "https://hvdcworld.com/news/lt-finalises-2-gw-hvdc-framework-with-tennet"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "site": {
+      "name": "Doordewind 2, Dutch North Sea",
+      "lat": 54.15,
+      "lon": 6.05,
+      "approx": true
+    }
   },
   {
     "id": "lanwin5",
@@ -306,7 +354,13 @@
         "url": "https://hvdcworld.com/news/lt-finalises-2-gw-hvdc-framework-with-tennet"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "site": {
+      "name": "LanWin5, German North Sea",
+      "lat": 55.25,
+      "lon": 6.15,
+      "approx": true
+    }
   },
   {
     "id": "balwin4",
@@ -341,7 +395,13 @@
         "url": "https://www.mcdermott.com/projects/tennet-2gw-portfolio-program-balwin4-lanwin1"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "site": {
+      "name": "BalWin4, German North Sea",
+      "lat": 55.1,
+      "lon": 6.0,
+      "approx": true
+    }
   },
   {
     "id": "lanwin1",
@@ -371,7 +431,13 @@
         "url": "https://www.offshorewind.biz/2026/02/18/mcdermott-starts-work-on-second-2-gw-offshore-platform-for-tennet"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "site": {
+      "name": "LanWin1, German North Sea",
+      "lat": 54.7,
+      "lon": 6.4,
+      "approx": true
+    }
   },
   {
     "id": "borwin6",
@@ -414,7 +480,13 @@
     "aliases": [
       "BorWin6",
       "BorWin kappa"
-    ]
+    ],
+    "site": {
+      "name": "BorWin6, German North Sea",
+      "lat": 54.45,
+      "lon": 6.05,
+      "approx": true
+    }
   },
   {
     "id": "balwin3",
@@ -449,7 +521,13 @@
         "url": "https://www.tennet.eu/de-en/news/new-shipyard-tennets-german-offshore-platforms-being-built-spain"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "site": {
+      "name": "BalWin3, German North Sea",
+      "lat": 54.85,
+      "lon": 6.65,
+      "approx": true
+    }
   },
   {
     "id": "lanwin2",
@@ -483,15 +561,15 @@
         "title": "Nexans Starts Manufacturing 525 kV Subsea Cables for LanWin2 Offshore Wind Grid Connection",
         "url": "https://offshorewind.biz/2026/10/16/nexans-starts-manufacturing-525-kv-subsea-cables-for-lanwin2-offshore-wind-grid-connection",
         "auto": true
-      },
-      {
-        "date": "2026-10-16",
-        "title": "Nexans starts manufacturing 525 kV subsea cables for LanWin2 offshore wind grid connection",
-        "url": "https://offshore-energy.biz/2026/10/16/nexans-starts-manufacturing-525-kv-subsea-cables-for-lanwin2-offshore-wind-grid-connection",
-        "auto": true
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "site": {
+      "name": "LanWin2, German North Sea",
+      "lat": 54.75,
+      "lon": 6.85,
+      "approx": true
+    }
   },
   {
     "id": "lanwin4",
@@ -521,7 +599,13 @@
         "url": "https://www.tennet.eu/de-en/news/new-shipyard-tennets-german-offshore-platforms-being-built-spain"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "site": {
+      "name": "LanWin4, German North Sea",
+      "lat": 55.2,
+      "lon": 6.45,
+      "approx": true
+    }
   },
   {
     "id": "dolwin4",
@@ -559,7 +643,13 @@
     "aliases": [
       "DolWin4",
       "DolWin kappa"
-    ]
+    ],
+    "site": {
+      "name": "DolWin4, German North Sea",
+      "lat": 54.05,
+      "lon": 6.7,
+      "approx": true
+    }
   },
   {
     "id": "borwin4",
@@ -593,7 +683,13 @@
         "url": "https://www.offshorewind.biz/2024/10/17/amprion-selects-owners-engineer-for-borwin4-dolwin4-converter-platforms/"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "site": {
+      "name": "BorWin4, German North Sea",
+      "lat": 54.35,
+      "lon": 6.35,
+      "approx": true
+    }
   },
   {
     "id": "balwin1",
@@ -627,7 +723,13 @@
         "url": "https://www.amprion.net/Press/Press-Detail-Page_82432.html"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "site": {
+      "name": "BalWin1, German North Sea",
+      "lat": 54.95,
+      "lon": 6.15,
+      "approx": true
+    }
   },
   {
     "id": "balwin2",
@@ -665,7 +767,13 @@
         "url": "https://www.amprion.net/Press/Press-Detail-Page_82432.html"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "site": {
+      "name": "BalWin2, German North Sea",
+      "lat": 55.05,
+      "lon": 6.35,
+      "approx": true
+    }
   },
   {
     "id": "lanwin3",
@@ -699,7 +807,13 @@
         "url": "https://www.offshorewind.biz/2026/09/18/neptun-werft-smulders-joint-venture-secures-second-2-gw-converter-platform-contract-from-50hertz"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "site": {
+      "name": "LanWin3, German North Sea",
+      "lat": 54.9,
+      "lon": 7.0,
+      "approx": true
+    }
   },
   {
     "id": "lanwin6",
@@ -729,7 +843,13 @@
         "url": "https://www.oedigital.com/amp/news/540397-50hertz-picks-siemens-energy-nsore-team-for-2gw-north-sea-converter-platform"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "site": {
+      "name": "LanWin6, German North Sea",
+      "lat": 55.05,
+      "lon": 6.95,
+      "approx": true
+    }
   },
   {
     "id": "ostwind4",
@@ -762,7 +882,13 @@
     "updated": "2026-10-23",
     "aliases": [
       "Ostwind 4"
-    ]
+    ],
+    "site": {
+      "name": "Ostwind 4, German Baltic Sea (NE of Rügen)",
+      "lat": 54.8,
+      "lon": 14.15,
+      "approx": true
+    }
   },
   {
     "id": "norfolk-vanguard-west",
@@ -799,7 +925,13 @@
     "updated": "2026-10-23",
     "aliases": [
       "Norfolk Vanguard"
-    ]
+    ],
+    "site": {
+      "name": "Norfolk Vanguard West, UK North Sea",
+      "lat": 52.85,
+      "lon": 2.55,
+      "approx": true
+    }
   },
   {
     "id": "norfolk-vanguard-east",
@@ -836,7 +968,13 @@
     "updated": "2026-10-23",
     "aliases": [
       "Norfolk Vanguard"
-    ]
+    ],
+    "site": {
+      "name": "Norfolk Vanguard East, UK North Sea",
+      "lat": 52.95,
+      "lon": 2.95,
+      "approx": true
+    }
   },
   {
     "id": "east-anglia-two",
@@ -874,7 +1012,13 @@
     "aliases": [
       "East Anglia TWO",
       "East Anglia 2"
-    ]
+    ],
+    "site": {
+      "name": "East Anglia TWO, UK North Sea",
+      "lat": 52.15,
+      "lon": 1.95,
+      "approx": true
+    }
   },
   {
     "id": "hornsea-3-link-1",
@@ -912,7 +1056,13 @@
     "aliases": [
       "Hornsea 3",
       "Hornsea Three"
-    ]
+    ],
+    "site": {
+      "name": "Hornsea 3, UK North Sea",
+      "lat": 53.85,
+      "lon": 2.45,
+      "approx": true
+    }
   },
   {
     "id": "hornsea-3-link-2",
@@ -950,7 +1100,13 @@
     "aliases": [
       "Hornsea 3",
       "Hornsea Three"
-    ]
+    ],
+    "site": {
+      "name": "Hornsea 3, UK North Sea",
+      "lat": 53.95,
+      "lon": 2.65,
+      "approx": true
+    }
   },
   {
     "id": "dolwin5",
@@ -988,7 +1144,13 @@
     "aliases": [
       "DolWin5",
       "DolWin epsilon"
-    ]
+    ],
+    "site": {
+      "name": "DolWin5, German North Sea",
+      "lat": 54.0,
+      "lon": 6.45,
+      "approx": true
+    }
   },
   {
     "id": "gennaker-zingst",
@@ -1037,7 +1199,13 @@
     "updated": "2026-10-23",
     "aliases": [
       "Zingst"
-    ]
+    ],
+    "site": {
+      "name": "Gennaker, German Baltic Sea",
+      "lat": 54.55,
+      "lon": 12.55,
+      "approx": true
+    }
   },
   {
     "id": "gennaker-darss",
@@ -1081,7 +1249,13 @@
     "updated": "2026-10-23",
     "aliases": [
       "Darß"
-    ]
+    ],
+    "site": {
+      "name": "Gennaker, German Baltic Sea",
+      "lat": 54.58,
+      "lon": 12.8,
+      "approx": true
+    }
   },
   {
     "id": "jasmund-windanker",
@@ -1119,7 +1293,13 @@
     "aliases": [
       "Jasmund",
       "Windanker"
-    ]
+    ],
+    "site": {
+      "name": "Windanker, German Baltic Sea",
+      "lat": 54.8,
+      "lon": 13.95,
+      "approx": true
+    }
   },
   {
     "id": "baltyk-2",
@@ -1153,7 +1333,13 @@
         "url": "https://www.polenergia.pl/en/baltic-2-3-gain-momentum-as-offshore-installation-phase-approaches/"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "site": {
+      "name": "Bałtyk 2, Polish Baltic Sea",
+      "lat": 55.05,
+      "lon": 17.25,
+      "approx": true
+    }
   },
   {
     "id": "baltyk-3",
@@ -1187,7 +1373,13 @@
         "url": "https://ocean-energyresources.com/2026/04/16/baltyk-3-topside-moves-to-the-next-phase/"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "site": {
+      "name": "Bałtyk 3, Polish Baltic Sea",
+      "lat": 55.1,
+      "lon": 17.5,
+      "approx": true
+    }
   },
   {
     "id": "baltica-2",
@@ -1220,7 +1412,13 @@
     "updated": "2026-10-23",
     "aliases": [
       "Baltica 2"
-    ]
+    ],
+    "site": {
+      "name": "Baltica 2, Polish Baltic Sea",
+      "lat": 54.95,
+      "lon": 16.85,
+      "approx": true
+    }
   },
   {
     "id": "formosa-4",
@@ -1250,7 +1448,13 @@
         "url": "https://www.offshorewind.biz/2026/01/29/construction-of-formosa-4-offshore-substation-starts-in-vietnam/"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "site": {
+      "name": "Formosa 4, Taiwan Strait (off Hsinchu)",
+      "lat": 24.95,
+      "lon": 120.65,
+      "approx": true
+    }
   },
   {
     "id": "rte-bretagne-sud",
@@ -1280,7 +1484,13 @@
         "url": "https://www.offshorewind.biz/2025/09/30/eiffage-wins-e1-5-billion-contract-for-french-offshore-substations/"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "site": {
+      "name": "Bretagne Sud, Bay of Biscay (off Belle-Île)",
+      "lat": 47.15,
+      "lon": -3.35,
+      "approx": true
+    }
   },
   {
     "id": "rte-narbonnaise",
@@ -1313,7 +1523,13 @@
     "updated": "2026-10-23",
     "aliases": [
       "Narbonnaise"
-    ]
+    ],
+    "site": {
+      "name": "Narbonnaise Sud-Hérault, Gulf of Lion",
+      "lat": 43.1,
+      "lon": 3.55,
+      "approx": true
+    }
   },
   {
     "id": "rte-golfe-de-fos",
@@ -1343,7 +1559,13 @@
         "url": "https://www.offshorewind.biz/2025/09/30/eiffage-wins-e1-5-billion-contract-for-french-offshore-substations/"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "site": {
+      "name": "Golfe de Fos, Gulf of Lion",
+      "lat": 43.2,
+      "lon": 4.85,
+      "approx": true
+    }
   },
   {
     "id": "rte-dunkerque",
@@ -1377,7 +1599,13 @@
     "aliases": [
       "Dunkerque",
       "Dunkirk"
-    ]
+    ],
+    "site": {
+      "name": "Dunkerque, French North Sea",
+      "lat": 51.12,
+      "lon": 2.25,
+      "approx": true
+    }
   },
   {
     "id": "rte-oleron",
@@ -1412,7 +1640,13 @@
       "Oléron",
       "Oleron",
       "AO7"
-    ]
+    ],
+    "site": {
+      "name": "Oléron, Bay of Biscay",
+      "lat": 45.9,
+      "lon": -1.65,
+      "approx": true
+    }
   },
   {
     "id": "rte-centre-manche-2",
@@ -1446,7 +1680,13 @@
     "aliases": [
       "Centre Manche 2",
       "AO8"
-    ]
+    ],
+    "site": {
+      "name": "Centre Manche 2, English Channel",
+      "lat": 49.95,
+      "lon": -0.65,
+      "approx": true
+    }
   },
   {
     "id": "taean",
@@ -1479,7 +1719,13 @@
     "updated": "2026-10-23",
     "aliases": [
       "Taean"
-    ]
+    ],
+    "site": {
+      "name": "Taean, Yellow Sea (Korea)",
+      "lat": 36.8,
+      "lon": 125.95,
+      "approx": true
+    }
   },
   {
     "id": "leting-yuetuo",
@@ -1513,7 +1759,13 @@
     "aliases": [
       "Leting",
       "Yuetuo"
-    ]
+    ],
+    "site": {
+      "name": "Leting Yuetuo Island, Bohai Sea",
+      "lat": 39.1,
+      "lon": 118.95,
+      "approx": true
+    }
   },
   {
     "id": "sunrise-wind",
@@ -1546,6 +1798,12 @@
     "updated": "2026-10-23",
     "aliases": [
       "Sunrise Wind"
-    ]
+    ],
+    "site": {
+      "name": "Sunrise Wind, US Atlantic (off Long Island)",
+      "lat": 40.9,
+      "lon": -71.1,
+      "approx": true
+    }
   }
 ]

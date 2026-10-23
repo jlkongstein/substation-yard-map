@@ -84,6 +84,10 @@ def fold(text: str) -> str:
     return "".join(c for c in text if not unicodedata.combining(c))
 
 
+def story_key(title: str) -> str:
+    return re.sub(r"[^a-z0-9]+", " ", fold(title)).strip()
+
+
 def get(url: str, timeout: int = 30) -> bytes:
     with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=timeout) as resp:
         return resp.read()
@@ -206,11 +210,14 @@ def main() -> int:
     since = dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=args.days)
     today = dt.date.today().isoformat()
 
-    candidates, feed_errors = [], []
+    candidates, feed_errors, stories = [], [], set()
     for url in FEEDS:
         try:
             for item in fetch_feed(url, since):
-                if item["url"] and item["url"] not in seen_set and all(c["url"] != item["url"] for c in candidates):
+                key = story_key(item["title"])
+                # The same press release often appears on several sites under the same headline: keep one.
+                if item["url"] and item["url"] not in seen_set and key not in stories:
+                    stories.add(key)
                     candidates.append(item)
         except Exception as exc:  # one dead feed must not stop the run
             feed_errors.append(f"{url}: {exc}")
@@ -228,17 +235,22 @@ def main() -> int:
                 unmatched.append({**art, "yards": yard_mentions(headline + " " + body, yards)})
             continue
         matched.append({**art, "platforms": hits})
+        added_to = []
         for pid in hits:
             p = by_id[pid]
-            if art["url"] not in {s["url"] for s in p.get("sources", [])}:
+            known = {s["url"] for s in p.get("sources", [])} | {story_key(s["title"]) for s in p.get("sources", [])}
+            if art["url"] not in known and story_key(art["title"]) not in known:
                 p.setdefault("sources", []).append({"date": art["date"], "title": art["title"], "url": art["url"], "auto": True})
-                changes.append({"id": pid, "description": f"News: {art['title']}", "url": art["url"]})
+                added_to.append(pid)
             # Status suggestions only when the platform is named in the headline/summary itself.
             if matches(headline, matchers[pid]):
                 s = suggest_status(art["title"] + " " + art["summary"], p["status"])
                 if s and (not p.get("suggested") or STATUSES.index(s) > STATUSES.index(p["suggested"]["status"])):
                     p["suggested"] = {"status": s, "date": art["date"], "title": art["title"], "url": art["url"]}
                     suggestions.append({"id": pid, "name": p["name"], "from": p["status"], "to": s, "url": art["url"], "title": art["title"]})
+        if added_to:
+            # One "What's new" line per article, listing every platform it concerns.
+            changes.append({"ids": added_to, "description": f"News: {art['title']}", "url": art["url"]})
 
     # ---- report (GitHub issue body) ----
     lines = [f"Weekly news scan for **{today}**: {len(candidates)} new articles checked, "

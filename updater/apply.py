@@ -53,7 +53,7 @@ def main() -> int:
     if args.note:
         p["notes"] = (p.get("notes", "") + f" {today}: {args.note}").strip()
     p["updated"] = today
-    entry = {"date": today, "summary": f"Manual update: {p['name']}", "changes": [{"id": p["id"], "description": description, "url": url or None}]}
+    entry = {"date": today, "summary": f"Manual update: {p['name']}", "changes": [{"ids": [p["id"]], "description": description, "url": url or None}]}
     meta["last_updated"] = today
     meta["changelog"] = ([entry] + meta.get("changelog", []))[:CHANGELOG_KEEP]
     save("platforms.json", platforms)

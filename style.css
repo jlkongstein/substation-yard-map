@@ -123,6 +123,17 @@ a { color: var(--accent); }
 }
 .legend span { display: flex; align-items: center; gap: 6px; }
 .legend i { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+.legend i.lg-site { background: #e0245e; border: 2px solid #fff; transform: rotate(45deg); border-radius: 2px; width: 10px; height: 10px; }
+.legend i.lg-route { width: 16px; height: 0; border-radius: 0; border-top: 3px dashed var(--accent); }
+
+.gw { font-size: 11px; font-weight: 600; color: var(--accent); white-space: nowrap; }
+.site-marker {
+  width: 18px; height: 18px; background: #e0245e; border: 3px solid #fff; transform: rotate(45deg);
+  border-radius: 3px; box-shadow: 0 1px 6px rgba(0,0,0,.45);
+}
+.site-tip { font-size: 12px; }
+.route-arrow { font-size: 14px; line-height: 16px; text-align: center; text-shadow: 0 0 3px #fff; }
+.detail .note.route { line-height: 1.6; }
 
 .yard-marker {
   display: flex; align-items: center; justify-content: center; border-radius: 50%;

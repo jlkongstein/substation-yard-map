@@ -20,10 +20,12 @@ const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v
 const statusColor = (s) => css(STATUS_VAR[s] || "--s-installed");
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const fmtNum = (n) => (n == null ? "–" : n.toLocaleString("en-GB"));
+const fmtGW = (mw) => (mw == null ? null : `${+(mw / 1000).toFixed(mw >= 1000 ? 1 : 2)} GW`);
+const sumGW = (ps) => fmtGW(ps.reduce((s, p) => s + (p.capacity_mw || 0), 0) || null);
 const latestNews = (p) => (p.sources || []).map((s) => s.date || "").sort().pop() || "";
 const isTopsideRole = (role) => !/^jacket$/i.test(role);
 
-let map, cluster, markers = new Map();
+let map, cluster, routeLayer, markers = new Map();
 
 async function load() {
   const get = (f) => fetch(`data/${f}?v=${Date.now()}`).then((r) => r.json());
@@ -51,19 +53,27 @@ function initMap() {
     iconCreateFunction: (c) => {
       const kids = c.getAllChildMarkers().map((m) => m.options.yard);
       const topside = kids.filter((k) => !k.jacket);
-      const n = (topside.length ? topside : kids).reduce((sum, k) => sum + k.n, 0);
+      // Count each platform once, even when several of its yards sit inside the same ball.
+      const n = clusterPlatforms(topside.length ? topside : kids).length;
       const color = topside.length ? statusColor(STATUSES[Math.min(...topside.map((k) => k.statusIdx))]) : css("--jacket");
       return yardIcon(n, color, { jacket: !topside.length, group: kids.length });
     },
   }).addTo(map);
   cluster.on("clustermouseover", (e) => {
-    const names = e.layer.getAllChildMarkers().map((m) => m.options.title).sort();
-    e.layer.bindTooltip(`${names.length} yards: ${names.join(", ")}`, { direction: "top" }).openTooltip();
+    const kids = e.layer.getAllChildMarkers();
+    const names = kids.map((m) => m.options.title).sort();
+    const ps = clusterPlatforms(kids.map((m) => m.options.yard));
+    const gw = sumGW(ps);
+    e.layer.bindTooltip(`${names.length} yards · ${ps.length} platforms${gw ? ` · ${gw}` : ""}<br>${names.map(esc).join("<br>")}`,
+      { direction: "top" }).openTooltip();
   });
+  routeLayer = L.layerGroup().addTo(map);
 
   $("legend").innerHTML =
     STATUSES.map((s) => `<span><i style="background:${statusColor(s)}"></i>${s}</span>`).join("") +
     `<span><i style="background:${css("--jacket")}"></i>Jacket only</span>` +
+    `<span><i class="lg-site"></i>Install site (selected platform)</span>` +
+    `<span><i class="lg-route"></i>Likely sea route</span>` +
     `<span style="color:${css("--muted")}">Colour = most active topside</span>`;
 }
 
@@ -154,6 +164,12 @@ function render() {
   renderList(vis, idx);
 }
 
+function clusterPlatforms(yardInfos) {
+  const seen = new Map();
+  for (const y of yardInfos) for (const p of y.platforms) seen.set(p.id, p);
+  return [...seen.values()];
+}
+
 function yardIcon(n, color, { jacket = false, group = 0 } = {}) {
   const size = 22 + Math.min(n, 8) * 4 + (group ? 6 : 0);
   return L.divIcon({
@@ -181,7 +197,7 @@ function renderMarkers(idx) {
     const n = jacketOnly ? items.length : topsideItems.length;
     const mk = L.marker([y.lat, y.lon], {
       icon: yardIcon(n, color, { jacket: jacketOnly }), title: y.name, riseOnHover: true,
-      yard: { n, statusIdx, jacket: jacketOnly },
+      yard: { n, statusIdx, jacket: jacketOnly, platforms: (jacketOnly ? items : topsideItems).map((i) => i.p) },
     }).bindPopup(() => yardPopup(y, items), { maxWidth: 320 });
     markers.set(y.id, mk);
   }
@@ -193,11 +209,16 @@ function yardPopup(y, items) {
   div.className = "pop";
   const rows = items.length
     ? items.map(({ p, role }) =>
-        `<li><a data-p="${esc(p.id)}"><span><span class="n">${esc(p.name)}</span><span class="role">${esc(role)}</span></span>
+        `<li><a data-p="${esc(p.id)}"><span><span class="n">${esc(p.name)}</span>${fmtGW(p.capacity_mw) ? ` <span class="gw">${fmtGW(p.capacity_mw)}</span>` : ""}
+         <span class="role">${esc(role)}</span>
+         ${p.site ? `<span class="role">→ Installed at: ${esc(p.site.name)}</span>` : ""}</span>
          <span class="pill" style="--c:${statusColor(p.status)}">${esc(p.status)}</span></a></li>`).join("")
     : `<li class="m">No platforms match the current filters.</li>`;
+  const topside = items.filter((i) => isTopsideRole(i.role)).map((i) => i.p);
+  const total = sumGW(topside);
   div.innerHTML = `<h3>${esc(y.name)}</h3>
     <div class="m">${esc(y.operator)} · ${esc(y.city)}, ${esc(y.country)}</div>
+    ${topside.length ? `<div class="m"><strong>${topside.length} topside${topside.length > 1 ? "s" : ""}${total ? ` · ${total} in total` : ""}</strong></div>` : ""}
     ${y.notes ? `<div class="m">${esc(y.notes)}</div>` : ""}
     <ul>${rows}</ul>`;
   div.addEventListener("click", (e) => {
@@ -215,10 +236,10 @@ function renderList(vis = visiblePlatforms(), idx = yardIndex(vis)) {
   if (state.tab === "platforms") {
     const rows = sortPlatforms(vis).map((p) => {
       const y = primaryYard(p);
-      const meta = [y ? `${y.name}, ${y.country}` : "Yard unknown", p.capacity_mw ? `${fmtNum(p.capacity_mw)} MW` : null, p.cod ? `COD ${p.cod}` : null]
+      const meta = [y ? `${y.name}, ${y.country}` : "Yard unknown", p.site ? `→ ${p.site.name.split(",")[1]?.trim() || p.site.name}` : null, p.cod ? `COD ${p.cod}` : null]
         .filter(Boolean).join(" · ");
       return `<li data-p="${esc(p.id)}" class="${state.selected === p.id ? "sel" : ""}">
-        <div class="t"><span>${esc(p.name)}</span><span class="pill" style="--c:${statusColor(p.status)}">${esc(p.status)}</span></div>
+        <div class="t"><span>${esc(p.name)}${fmtGW(p.capacity_mw) ? ` <span class="gw">${fmtGW(p.capacity_mw)}</span>` : ""}</span><span class="pill" style="--c:${statusColor(p.status)}">${esc(p.status)}</span></div>
         <div class="m">${esc(p.client)} · ${esc(p.type)}${p.confidence === "low" ? ` · <span class="conf-low">unverified</span>` : ""}${p.suggested ? ` · <span class="conf-low">possibly ${esc(p.suggested.status.toLowerCase())}</span>` : ""}</div>
         <div class="m">${esc(meta)}</div></li>`;
     });
@@ -229,7 +250,8 @@ function renderList(vis = visiblePlatforms(), idx = yardIndex(vis)) {
       .map((y) => {
         const items = idx.get(y.id) || [];
         const names = items.map((i) => i.p.name).join(", ");
-        return `<li data-y="${esc(y.id)}"><div class="t"><span>${esc(y.name)}</span><span class="m">${items.length}</span></div>
+        const gw = sumGW(items.filter((i) => isTopsideRole(i.role)).map((i) => i.p));
+        return `<li data-y="${esc(y.id)}"><div class="t"><span>${esc(y.name)}${gw ? ` <span class="gw">${gw}</span>` : ""}</span><span class="m">${items.length}</span></div>
           <div class="m">${esc(y.operator)} · ${esc(y.city)}, ${esc(y.country)}${y.kind === "jacket" ? " · jacket yard" : ""}</div>
           ${names ? `<div class="m">${esc(names)}</div>` : ""}</li>`;
       });
@@ -270,6 +292,7 @@ function showPlatform(id, { fly = true } = {}) {
     const yy = state.yardById.get(r.yard);
     return `<li><a href="#" data-y="${esc(r.yard)}">${esc(yy ? yy.name : r.yard)}</a> – ${esc(r.role)}${yy ? `<br><span class="m">${esc(yy.city)}, ${esc(yy.country)}</span>` : ""}</li>`;
   }).join("");
+  const voyage = drawVoyage(p);
   const src = [...(p.sources || [])].sort((a, b) => (b.date || "").localeCompare(a.date || ""))
     .map((s) => `<li>${s.date ? `<span class="m">${esc(s.date)}</span> ` : ""}<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a></li>`).join("");
 
@@ -283,7 +306,8 @@ function showPlatform(id, { fly = true } = {}) {
       <dt>Type</dt><dd>${esc(p.type)}</dd>
       <dt>Client</dt><dd>${esc(p.client)}</dd>
       <dt>EPC / consortium</dt><dd>${esc(p.epc || "–")}</dd>
-      <dt>Capacity</dt><dd>${p.capacity_mw ? `${fmtNum(p.capacity_mw)} MW` : "–"}</dd>
+      <dt>Capacity</dt><dd>${p.capacity_mw ? `<strong>${fmtGW(p.capacity_mw)}</strong> (${fmtNum(p.capacity_mw)} MW)` : "–"}</dd>
+      <dt>Installation site</dt><dd>${p.site ? `<a href="#" data-site>${esc(p.site.name)}</a>${p.site.approx ? ' <span class="m">(approx. position)</span>' : ""}` : "–"}</dd>
       <dt>Topside weight</dt><dd>${p.topside_t ? `~${fmtNum(p.topside_t)} t` : "–"}</dd>
       <dt>Sail-away</dt><dd>${esc(p.sailaway || "–")}</dd>
       <dt>Expected COD</dt><dd>${esc(p.cod || "–")}</dd>
@@ -292,25 +316,76 @@ function showPlatform(id, { fly = true } = {}) {
     </dl>
     ${p.notes ? `<div class="note">${esc(p.notes)}</div>` : ""}
     <h4>Yards</h4><ul>${yardsHtml}</ul>
+    ${voyage ? `<h4>Likely sea route</h4>
+      <div class="note route">${voyage.stops.map(esc).join(" → ")}<br>
+        ≈ ${fmtNum(Math.round(voyage.km / 1.852 / 100) * 100)} nm (${fmtNum(Math.round(voyage.km / 100) * 100)} km)${voyage.via.length ? `, via ${esc(voyage.via.join(", "))}` : ""}<br>
+        <span class="m">≈ ${Math.round(voyage.km / 1.852 / (8 * 24))} days at 8 knots, a typical heavy-transport/tow speed.
+        Estimated from main shipping lanes${voyage.via.includes("Cape of Good Hope") ? "; Asia/Gulf–Europe voyages assumed to avoid the Red Sea" : ""}.</span></div>` : ""}
     <h4>Sources & news</h4><ul>${src || "<li>None</li>"}</ul>`;
   $("detail").hidden = false;
   $("detailBody").querySelectorAll("a[data-y]").forEach((a) =>
     a.addEventListener("click", (e) => { e.preventDefault(); focusYard(a.dataset.y); }));
+  $("detailBody").querySelector("a[data-site]")?.addEventListener("click", (e) => {
+    e.preventDefault(); map.setView([p.site.lat, p.site.lon], 8);
+  });
   renderList();
   // The detail panel changes the map's size, so measure before moving the view.
   map.invalidateSize();
   if (fly) {
-    // Fit all yards involved (e.g. Thailand + Norway) or go to the single one.
+    // Show the whole voyage: every yard involved plus the installation site.
     const pts = p.yards.map((r) => state.yardById.get(r.yard)).filter(Boolean).map((yy) => [yy.lat, yy.lon]);
+    if (voyage) voyage.legs.flat().forEach((pt) => pts.push(pt));
+    else if (p.site) pts.push([p.site.lat, p.site.lon]);
     const small = map.getSize().x < 500;
-    if (pts.length > 1) map.fitBounds(pts, { padding: small ? [20, 20] : [60, 60], maxZoom: 8 });
+    if (pts.length > 1) map.fitBounds(pts, { padding: small ? [20, 20] : [50, 50], maxZoom: 8 });
     else if (pts.length) map.setView(pts[0], Math.max(map.getZoom(), 7));
   }
+}
+
+// Order the yards along the voyage: steel/modules -> fabrication/assembly -> outfitting, then the site.
+function voyageStops(p) {
+  const rank = (role) => (/module|steel/i.test(role) ? 0 : /outfit|complet|commission/i.test(role) ? 2 : 1);
+  const byRank = new Map();
+  for (const r of p.yards) {
+    if (!isTopsideRole(r.role)) continue;
+    const y = state.yardById.get(r.yard);
+    const k = rank(r.role);
+    if (y && !byRank.has(k)) byRank.set(k, y);
+  }
+  return [...byRank.entries()].sort((a, b) => a[0] - b[0]).map(([, y]) => y);
+}
+
+function drawVoyage(p) {
+  routeLayer.clearLayers();
+  if (!p.site) return null;
+  const yards = voyageStops(p);
+  const site = p.site;
+  const siteIcon = L.divIcon({ className: "", html: '<div class="site-marker"></div>', iconSize: [22, 22], iconAnchor: [11, 11] });
+  L.marker([site.lat, site.lon], { icon: siteIcon, zIndexOffset: 1000 })
+    .bindTooltip(`<strong>${esc(p.name)}</strong><br>Installation site: ${esc(site.name)}`, { direction: "top", offset: [0, -10], permanent: true, className: "site-tip" })
+    .addTo(routeLayer);
+  if (!yards.length) return null;
+
+  const r = SeaRoute.route([...yards, site]);
+  const color = css("--accent");
+  r.legs.forEach((leg, i) => {
+    const last = i === r.legs.length - 1;
+    L.polyline(leg, { color, weight: 3, opacity: 0.9, dashArray: last ? "8 6" : "3 6", interactive: false }).addTo(routeLayer);
+    // Arrow halfway along each leg, pointing in the direction of travel.
+    const mid = Math.floor((leg.length - 1) / 2);
+    const [a, b] = [leg[mid], leg[mid + 1]];
+    const pa = map.project(a, 5), pb = map.project(b, 5);
+    const deg = (Math.atan2(pb.y - pa.y, pb.x - pa.x) * 180) / Math.PI;
+    const arrow = L.divIcon({ className: "", html: `<div class="route-arrow" style="transform:rotate(${deg}deg);color:${color}">➤</div>`, iconSize: [16, 16], iconAnchor: [8, 8] });
+    L.marker([(a[0] + b[0]) / 2, (a[1] + b[1]) / 2], { icon: arrow, interactive: false }).addTo(routeLayer);
+  });
+  return { ...r, stops: [...yards.map((y) => y.name), site.name.split(",")[0]] };
 }
 
 function closeDetail() {
   $("detail").hidden = true;
   state.selected = null;
+  routeLayer.clearLayers();
   history.replaceState(null, "", location.pathname);
   renderList();
   setTimeout(() => map.invalidateSize(), 50);
@@ -329,9 +404,9 @@ function openNews() {
     <h3>${esc(entry.date)}</h3>
     <p>${esc(entry.summary || "")}</p>
     <ul>${(entry.changes || []).map((c) => {
-      const p = byId.get(c.id);
+      const names = (c.ids || [c.id]).map((id) => byId.get(id)?.name || id).join(", ");
       const link = c.url ? ` <a href="${esc(c.url)}" target="_blank" rel="noopener">source</a>` : "";
-      return `<li><strong>${esc(p ? p.name : c.id)}</strong>: ${esc(c.description)}${link}</li>`;
+      return `<li><strong>${esc(names)}</strong>: ${esc(c.description)}${link}</li>`;
     }).join("")}</ul>`).join("") || "<p>No updates yet.</p>";
   $("newsDialog").showModal();
 }
