@@ -1,4 +1,4 @@
-name: Weekly news update
+name: Weekly news scan
 
 on:
   schedule:
@@ -7,33 +7,40 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 concurrency:
-  group: weekly-update
+  group: data-writes
   cancel-in-progress: false
 
 jobs:
-  update:
+  scan:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install -r updater/requirements.txt
-      - name: Run updater
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: python updater/update.py
+      - name: Scan news feeds
+        run: python updater/news_scan.py --report "$RUNNER_TEMP/report.md"
       - name: Commit data changes
         run: |
-          if git diff --quiet -- data; then
-            echo "No changes this week."
+          if git diff --quiet -- data && [ -z "$(git ls-files --others --exclude-standard data)" ]; then
+            echo "No data changes."
             exit 0
           fi
           git config user.name "yard-map-bot"
           git config user.email "yard-map-bot@users.noreply.github.com"
           git add data
-          git commit -m "Weekly data update $(date -u +%Y-%m-%d)"
+          git commit -m "Weekly news scan $(date -u +%Y-%m-%d)"
           git push
+      - name: Open weekly issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if grep -q "^## " "$RUNNER_TEMP/report.md"; then
+            gh issue create --title "News scan $(date -u +%Y-%m-%d)" --body-file "$RUNNER_TEMP/report.md"
+          else
+            echo "Nothing to report this week."
+          fi

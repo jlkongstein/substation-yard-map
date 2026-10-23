@@ -36,7 +36,10 @@
         "url": "https://windpowernl.com/2024/09/11/construction-of-tennets-very-first-2gw-offshore-platform-kicks-off/"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "aliases": [
+      "IJmuiden Ver Beta"
+    ]
   },
   {
     "id": "ijmuiden-ver-gamma",
@@ -74,7 +77,10 @@
         "url": "https://www.offshorewind.biz/2026/06/10/seatrium-orders-six-liebherr-cranes-for-tennets-2-gw-dutch-offshore-grid-platforms"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "aliases": [
+      "IJmuiden Ver Gamma"
+    ]
   },
   {
     "id": "nederwiek-2",
@@ -147,7 +153,10 @@
         "url": "https://windpowernl.com/2025/10/28/tennet-terminates-contract-with-petrofac-hitachi-energy-and-new-partner-to-continue-2gw-offshore-grid-projects/"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "aliases": [
+      "IJmuiden Ver Alpha"
+    ]
   },
   {
     "id": "nederwiek-1",
@@ -401,7 +410,11 @@
         "url": "https://www.mammoet.com/news/jacket-loadout-milestone-completed-for-borwin6-offshore-hvdc-platform/"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "aliases": [
+      "BorWin6",
+      "BorWin kappa"
+    ]
   },
   {
     "id": "balwin3",
@@ -530,7 +543,11 @@
         "url": "https://www.offshorewind.biz/2023/11/22/amprion-picks-steel-contractor-for-offshore-converter-platforms/"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "aliases": [
+      "DolWin4",
+      "DolWin kappa"
+    ]
   },
   {
     "id": "borwin4",
@@ -730,7 +747,10 @@
         "url": "https://ocean-energyresources.com/2026/07/16/iv-to-design-topside-ostwind-4-offshore-hvdc-converter/"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "aliases": [
+      "Ostwind 4"
+    ]
   },
   {
     "id": "norfolk-vanguard-west",
@@ -764,7 +784,10 @@
         "url": "https://www.offshorewind.biz/2024/04/18/drydocks-world-cuts-first-steel-for-norfolk-vanguard-offshore-substations"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "aliases": [
+      "Norfolk Vanguard"
+    ]
   },
   {
     "id": "norfolk-vanguard-east",
@@ -798,7 +821,10 @@
         "url": "https://www.offshorewind.biz/2024/04/18/drydocks-world-cuts-first-steel-for-norfolk-vanguard-offshore-substations"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "aliases": [
+      "Norfolk Vanguard"
+    ]
   },
   {
     "id": "east-anglia-two",
@@ -832,7 +858,11 @@
         "url": "https://www.offshorewind.biz/2026/03/26/smulders-hsm-starts-building-east-anglia-two-offshore-substation/"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "aliases": [
+      "East Anglia TWO",
+      "East Anglia 2"
+    ]
   },
   {
     "id": "hornsea-3-link-1",
@@ -866,7 +896,11 @@
         "url": "https://orsted.co.uk/media/newsroom/news/2026/05/first-hornsea-3-offshore-converter-station-successfully-installed"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "aliases": [
+      "Hornsea 3",
+      "Hornsea Three"
+    ]
   },
   {
     "id": "hornsea-3-link-2",
@@ -900,7 +934,11 @@
         "url": "https://ecomagazine.com/news/industry/hornsea-3-reaches-milestone-as-orsted-installs-both-converter-stations"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "aliases": [
+      "Hornsea 3",
+      "Hornsea Three"
+    ]
   },
   {
     "id": "dolwin5",
@@ -934,7 +972,11 @@
         "url": "https://www.offshorewind.biz/2026/01/23/seatrium-aibel-launch-arbitration-to-settle-differences-on-dolwin-epsilon-project/"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "aliases": [
+      "DolWin5",
+      "DolWin epsilon"
+    ]
   },
   {
     "id": "gennaker-zingst",
@@ -974,7 +1016,10 @@
         "url": "https://www.renews.biz/offshore-wind/gennaker-offshore-substations-installed-in-baltic-sea/"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "aliases": [
+      "Zingst"
+    ]
   },
   {
     "id": "gennaker-darss",
@@ -1009,7 +1054,10 @@
         "url": "https://www.renews.biz/offshore-wind/gennaker-offshore-substations-installed-in-baltic-sea/"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "aliases": [
+      "Darß"
+    ]
   },
   {
     "id": "jasmund-windanker",
@@ -1043,7 +1091,11 @@
         "url": "https://www.offshorewind.biz/2025/12/05/offshore-substation-for-windanker-project-en-route-to-baltic-sea-site"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "aliases": [
+      "Jasmund",
+      "Windanker"
+    ]
   },
   {
     "id": "baltyk-2",
@@ -1141,7 +1193,10 @@
         "url": "https://www.offshorewind.biz/2026/09/14/four-baltica-2-offshore-substations-set-sail-from-vietnam-to-poland"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "aliases": [
+      "Baltica 2"
+    ]
   },
   {
     "id": "formosa-4",
@@ -1231,7 +1286,10 @@
         "url": "https://www.offshorewind.biz/2025/09/30/eiffage-wins-e1-5-billion-contract-for-french-offshore-substations/"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "aliases": [
+      "Narbonnaise"
+    ]
   },
   {
     "id": "rte-golfe-de-fos",
@@ -1291,7 +1349,11 @@
         "url": "https://www.offshorewind.biz/2024/12/05/chantiers-de-latlantique-to-build-substation-for-600-mw-french-offshore-wind-farm"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "aliases": [
+      "Dunkerque",
+      "Dunkirk"
+    ]
   },
   {
     "id": "rte-oleron",
@@ -1321,7 +1383,12 @@
         "url": "https://www.offshorewind.biz/2024/04/29/hitachi-chantiers-de-latlantique-to-seal-french-offshore-substation-contract/"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "aliases": [
+      "Oléron",
+      "Oleron",
+      "AO7"
+    ]
   },
   {
     "id": "rte-centre-manche-2",
@@ -1351,7 +1418,11 @@
         "url": "https://www.offshorewind.biz/2024/04/29/hitachi-chantiers-de-latlantique-to-seal-french-offshore-substation-contract/"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "aliases": [
+      "Centre Manche 2",
+      "AO8"
+    ]
   },
   {
     "id": "taean",
@@ -1381,7 +1452,10 @@
         "url": "https://www.asiae.co.kr/en/article/2026100209124596196"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "aliases": [
+      "Taean"
+    ]
   },
   {
     "id": "leting-yuetuo",
@@ -1411,7 +1485,11 @@
         "url": "https://www.webdisclosure.com/press-release/zpmc-etr-zpmc-ships-topside-module-for-chinas-first-lightweight-integrated-offshore-substation-JCDl3p6gRX0"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "aliases": [
+      "Leting",
+      "Yuetuo"
+    ]
   },
   {
     "id": "sunrise-wind",
@@ -1441,6 +1519,9 @@
         "url": "https://www.offshorewind.biz/2021/10/27/sunrise-wind-first-us-offshore-wind-project-to-use-hvdc-transmission-technology/"
       }
     ],
-    "updated": "2026-10-23"
+    "updated": "2026-10-23",
+    "aliases": [
+      "Sunrise Wind"
+    ]
   }
 ]

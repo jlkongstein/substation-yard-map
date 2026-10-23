@@ -1,0 +1,60 @@
+name: Apply status change
+
+on:
+  workflow_dispatch:
+    inputs:
+      platform_id:
+        description: "Platform id (e.g. balwin4), as shown in the weekly issue"
+        required: true
+        type: string
+      action:
+        description: "What to do"
+        required: true
+        type: choice
+        default: "Accept suggestion"
+        options:
+          - "Accept suggestion"
+          - "Dismiss suggestion"
+          - "Contracted"
+          - "Fabrication"
+          - "Outfitting"
+          - "Sailed away"
+          - "Installed"
+      note:
+        description: "Optional note (added to the platform's notes)"
+        required: false
+        type: string
+      source_url:
+        description: "Optional source link (for manual status changes)"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: data-writes
+  cancel-in-progress: false
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Apply
+        env:
+          PLATFORM_ID: ${{ inputs.platform_id }}
+          ACTION: ${{ inputs.action }}
+          NOTE: ${{ inputs.note }}
+          SOURCE_URL: ${{ inputs.source_url }}
+        run: python updater/apply.py "$PLATFORM_ID" "$ACTION" --note "$NOTE" --url "$SOURCE_URL"
+      - name: Commit
+        run: |
+          git config user.name "yard-map-bot"
+          git config user.email "yard-map-bot@users.noreply.github.com"
+          git add data
+          git commit -m "Apply status change: ${{ inputs.platform_id }} (${{ inputs.action }})" || exit 0
+          git push

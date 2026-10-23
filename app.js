@@ -195,7 +195,7 @@ function renderList(vis = visiblePlatforms(), idx = yardIndex(vis)) {
         .filter(Boolean).join(" · ");
       return `<li data-p="${esc(p.id)}" class="${state.selected === p.id ? "sel" : ""}">
         <div class="t"><span>${esc(p.name)}</span><span class="pill" style="--c:${statusColor(p.status)}">${esc(p.status)}</span></div>
-        <div class="m">${esc(p.client)} · ${esc(p.type)}${p.confidence === "low" ? ` · <span class="conf-low">unverified</span>` : ""}</div>
+        <div class="m">${esc(p.client)} · ${esc(p.type)}${p.confidence === "low" ? ` · <span class="conf-low">unverified</span>` : ""}${p.suggested ? ` · <span class="conf-low">possibly ${esc(p.suggested.status.toLowerCase())}</span>` : ""}</div>
         <div class="m">${esc(meta)}</div></li>`;
     });
     list.innerHTML = rows.join("") || `<li class="empty">No platforms match.</li>`;
@@ -245,6 +245,8 @@ function showPlatform(id, { fly = true } = {}) {
     <h2>${esc(p.name)}</h2>
     <div class="m">${esc(p.project)} · ${esc(p.site_country)}</div>
     <span class="pill" style="--c:${statusColor(p.status)}">${esc(p.status)}</span>
+    ${p.suggested ? `<div class="note suggest">Possible update (not yet confirmed): <strong>${esc(p.suggested.status)}</strong>, from
+      <a href="${esc(p.suggested.url)}" target="_blank" rel="noopener">${esc(p.suggested.title)}</a> (${esc(p.suggested.date)})</div>` : ""}
     <dl>
       <dt>Type</dt><dd>${esc(p.type)}</dd>
       <dt>Client</dt><dd>${esc(p.client)}</dd>
