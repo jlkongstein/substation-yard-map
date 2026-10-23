@@ -111,11 +111,11 @@ a { color: var(--accent); }
 
 .mapwrap { flex: 1; position: relative; min-width: 0; }
 #map { position: absolute; inset: 0; background: var(--bg); }
-.basemap { filter: saturate(.55) brightness(1.03); }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .basemap { filter: invert(1) hue-rotate(180deg) brightness(1.15) saturate(.5) contrast(.95); }
+.site-dot {
+  width: 10px; height: 10px; transform: rotate(45deg); border: 1.5px solid #fff; border-radius: 1px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.35); opacity: .9; cursor: pointer;
 }
-:root[data-theme="dark"] .basemap { filter: invert(1) hue-rotate(180deg) brightness(1.15) saturate(.5) contrast(.95); }
+.checks { display: flex; flex-wrap: wrap; gap: 4px 16px; }
 .legend {
   position: absolute; left: 12px; bottom: 22px; z-index: 500; background: var(--panel);
   border: 1px solid var(--border); border-radius: 10px; padding: 8px 10px; font-size: 12px;
@@ -124,6 +124,7 @@ a { color: var(--accent); }
 .legend span { display: flex; align-items: center; gap: 6px; }
 .legend i { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
 .legend i.lg-site { background: #e0245e; border: 2px solid #fff; transform: rotate(45deg); border-radius: 2px; width: 10px; height: 10px; }
+.legend i.lg-site.small { background: var(--muted); width: 8px; height: 8px; border-width: 1.5px; margin: 0 2px; }
 .legend i.lg-route { width: 16px; height: 0; border-radius: 0; border-top: 3px dashed var(--accent); }
 
 .gw { font-size: 11px; font-weight: 600; color: var(--accent); white-space: nowrap; }

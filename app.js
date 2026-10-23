@@ -2,6 +2,8 @@
 // sortable platform list. All data is static; the weekly updater rewrites the JSON files.
 
 const STATUSES = ["Contracted", "Fabrication", "Outfitting", "Sailed away", "Installed"];
+// This is a production tracker: installed platforms stay in the data but are never shown.
+const TRACKED = STATUSES.filter((s) => s !== "Installed");
 const STATUS_VAR = {
   "Contracted": "--s-contracted", "Fabrication": "--s-fabrication", "Outfitting": "--s-outfitting",
   "Sailed away": "--s-sailed", "Installed": "--s-installed",
@@ -12,7 +14,7 @@ const state = {
   yardById: new Map(),
   q: "", sort: "news", type: "",
   statuses: new Set(["Contracted", "Fabrication", "Outfitting", "Sailed away"]),
-  showJackets: false, tab: "platforms", selected: null,
+  showJackets: false, hideUnverified: false, tab: "platforms", selected: null,
 };
 
 const $ = (id) => document.getElementById(id);
@@ -25,7 +27,7 @@ const sumGW = (ps) => fmtGW(ps.reduce((s, p) => s + (p.capacity_mw || 0), 0) || 
 const latestNews = (p) => (p.sources || []).map((s) => s.date || "").sort().pop() || "";
 const isTopsideRole = (role) => !/^jacket$/i.test(role);
 
-let map, cluster, routeLayer, markers = new Map();
+let map, cluster, routeLayer, sitesLayer, markers = new Map();
 
 async function load() {
   const get = (f) => fetch(`data/${f}?v=${Date.now()}`).then((r) => r.json());
@@ -40,9 +42,11 @@ async function load() {
 
 function initMap() {
   map = L.map("map", { worldCopyJump: true, zoomControl: true }).setView([45, 40], 3);
-  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    maxZoom: 19, className: "basemap",
+  // Plain grey land/sea basemap without roads or labels: only the coastlines matter here.
+  const dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  L.tileLayer(`https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_${dark ? "Dark" : "Light"}_Gray_Base/MapServer/tile/{z}/{y}/{x}`, {
+    attribution: "Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap contributors",
+    maxZoom: 16,
   }).addTo(map);
 
   // Yards that would overlap merge into one ball (numbers summed) and split again as you zoom in.
@@ -67,18 +71,19 @@ function initMap() {
     e.layer.bindTooltip(`${names.length} yards · ${ps.length} platforms${gw ? ` · ${gw}` : ""}<br>${names.map(esc).join("<br>")}`,
       { direction: "top" }).openTooltip();
   });
+  sitesLayer = L.layerGroup().addTo(map);
   routeLayer = L.layerGroup().addTo(map);
 
   $("legend").innerHTML =
-    STATUSES.map((s) => `<span><i style="background:${statusColor(s)}"></i>${s}</span>`).join("") +
+    TRACKED.map((s) => `<span><i style="background:${statusColor(s)}"></i>${s}</span>`).join("") +
     `<span><i style="background:${css("--jacket")}"></i>Jacket only</span>` +
-    `<span><i class="lg-site"></i>Install site (selected platform)</span>` +
+    `<span><i class="lg-site small"></i>Installation site</span>` +
     `<span><i class="lg-route"></i>Likely sea route</span>` +
     `<span style="color:${css("--muted")}">Colour = most active topside</span>`;
 }
 
 function initControls() {
-  $("statusChips").innerHTML = STATUSES.map((s) =>
+  $("statusChips").innerHTML = TRACKED.map((s) =>
     `<button type="button" class="chip${state.statuses.has(s) ? " on" : ""}" data-s="${s}" style="--c:${statusColor(s)}"><span class="dot"></span>${s}</button>`
   ).join("");
   $("statusChips").addEventListener("click", (e) => {
@@ -92,6 +97,7 @@ function initControls() {
   $("sort").addEventListener("change", (e) => { state.sort = e.target.value; render(); });
   $("type").addEventListener("change", (e) => { state.type = e.target.value; render(); });
   $("showJackets").addEventListener("change", (e) => { state.showJackets = e.target.checked; render(); });
+  $("hideUnverified").addEventListener("change", (e) => { state.hideUnverified = e.target.checked; render(); });
   document.querySelectorAll(".tab").forEach((t) => t.addEventListener("click", () => {
     document.querySelectorAll(".tab").forEach((x) => x.classList.toggle("active", x === t));
     state.tab = t.dataset.tab; renderList();
@@ -103,7 +109,8 @@ function initControls() {
   $("newsBtn").addEventListener("click", openNews);
 
   const m = state.meta;
-  $("stats").textContent = `${state.platforms.length} platforms · ${state.yards.length} yards · updated ${m.last_updated || "–"}`;
+  const inProduction = state.platforms.filter((p) => p.status !== "Installed");
+  $("stats").textContent = `${inProduction.length} platforms in production · ${sumGW(inProduction)} · updated ${m.last_updated || "–"}`;
 }
 
 // ---------- filtering ----------
@@ -118,7 +125,8 @@ function haystack(p) {
 
 function visiblePlatforms() {
   return state.platforms.filter((p) =>
-    state.statuses.has(p.status) &&
+    state.statuses.has(p.status) && p.status !== "Installed" &&
+    !(state.hideUnverified && p.confidence === "low") &&
     (!state.type || p.type === state.type) &&
     (!state.q || haystack(p).includes(state.q))
   );
@@ -161,7 +169,30 @@ function render() {
   const vis = visiblePlatforms();
   const idx = yardIndex(vis);
   renderMarkers(idx);
+  renderSites(vis);
   renderList(vis, idx);
+}
+
+// Small diamonds for where each visible platform will be installed; platforms sharing a site share one.
+function renderSites(vis) {
+  sitesLayer.clearLayers();
+  const bySite = new Map();
+  for (const p of vis) {
+    if (!p.site) continue;
+    const k = `${p.site.lat.toFixed(2)},${p.site.lon.toFixed(2)}`;
+    if (!bySite.has(k)) bySite.set(k, []);
+    bySite.get(k).push(p);
+  }
+  for (const ps of bySite.values()) {
+    const s = ps[0].site;
+    const color = statusColor(STATUSES[Math.min(...ps.map((p) => STATUSES.indexOf(p.status)))]);
+    const icon = L.divIcon({ className: "", html: `<div class="site-dot" style="background:${color}"></div>`, iconSize: [12, 12], iconAnchor: [6, 6] });
+    const label = ps.map((p) => `${esc(p.name)}${fmtGW(p.capacity_mw) ? ` · ${fmtGW(p.capacity_mw)}` : ""} · ${esc(p.status)}`).join("<br>");
+    L.marker([s.lat, s.lon], { icon, zIndexOffset: -500 })
+      .bindTooltip(`<strong>${esc(s.name)}</strong><br>${label}`, { direction: "top", offset: [0, -6] })
+      .on("click", () => showPlatform(ps[0].id))
+      .addTo(sitesLayer);
+  }
 }
 
 function clusterPlatforms(yardInfos) {
@@ -211,7 +242,7 @@ function yardPopup(y, items) {
     ? items.map(({ p, role }) =>
         `<li><a data-p="${esc(p.id)}"><span><span class="n">${esc(p.name)}</span>${fmtGW(p.capacity_mw) ? ` <span class="gw">${fmtGW(p.capacity_mw)}</span>` : ""}
          <span class="role">${esc(role)}</span>
-         ${p.site ? `<span class="role">→ Installed at: ${esc(p.site.name)}</span>` : ""}</span>
+         ${p.site ? `<span class="role">→ Site: ${esc(p.site.name)}</span>` : ""}</span>
          <span class="pill" style="--c:${statusColor(p.status)}">${esc(p.status)}</span></a></li>`).join("")
     : `<li class="m">No platforms match the current filters.</li>`;
   const topside = items.filter((i) => isTopsideRole(i.role)).map((i) => i.p);
