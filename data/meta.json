@@ -3,6 +3,32 @@
   "changelog": [
     {
       "date": "2026-10-23",
+      "summary": "News scan: 4 article(s) matched to platforms, 3 unmatched relevant article(s).",
+      "changes": [
+        {
+          "id": "lanwin2",
+          "description": "News: Nexans Starts Manufacturing 525 kV Subsea Cables for LanWin2 Offshore Wind Grid Connection",
+          "url": "https://offshorewind.biz/2026/10/16/nexans-starts-manufacturing-525-kv-subsea-cables-for-lanwin2-offshore-wind-grid-connection"
+        },
+        {
+          "id": "lanwin2",
+          "description": "News: Nexans starts manufacturing 525 kV subsea cables for LanWin2 offshore wind grid connection",
+          "url": "https://offshore-energy.biz/2026/10/16/nexans-starts-manufacturing-525-kv-subsea-cables-for-lanwin2-offshore-wind-grid-connection"
+        },
+        {
+          "id": "gennaker-zingst",
+          "description": "News: Gennaker installs two offshore substations",
+          "url": "https://transformer-magazine.com/news/gennaker-installs-two-offshore-substations/"
+        },
+        {
+          "id": "gennaker-darss",
+          "description": "News: Gennaker installs two offshore substations",
+          "url": "https://transformer-magazine.com/news/gennaker-installs-two-offshore-substations/"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-23",
       "summary": "Initial dataset: 44 platforms across 24 yards, seeded from trade-press research.",
       "changes": [
         {
