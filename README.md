@@ -33,9 +33,12 @@ blocks `fetch` of the JSON files.
 
 Every Monday at 05:00 UTC, GitHub Actions runs `updater/news_scan.py`. It costs nothing and needs no API keys.
 
-1. It reads the RSS feeds of offshoreWIND.biz, Offshore Energy, reNEWS, Ocean Energy Resources,
-   Transformer Magazine, Splash247, MarineLink and WindpowerNL, and keeps new articles that look
-   substation-related.
+1. It reads eight sources: offshoreWIND.biz, Offshore Energy, Renewables Now, OE Digital, Recharge,
+   Windpower Monthly, MarineLink and offshorewindfarmprojects.com. Sites with an RSS feed are read from
+   the feed. For Recharge, OE Digital and offshorewindfarmprojects.com, which have no usable feed, it
+   reads the article links on their news pages. It keeps new articles that look substation-related. The
+   list is `SOURCES` in `updater/news_scan.py`. OE Digital currently blocks automated readers, so it
+   adds nothing. Its sister site MarineLink carries much of the same news.
 2. It opens each article and matches it to platforms by name. Names come from each platform's `name`
    and `project`, plus an optional `aliases` list, e.g. `["BorWin6", "BorWin kappa"]`.
 3. Matched articles are added to the platform's sources and appear under "What's new" on the site.
@@ -55,6 +58,8 @@ status.
 the pencil icon. Copy an existing entry as a template.
 
 Manual run: `python updater/news_scan.py --dry-run` prints the report without changing anything.
+`--rescan --days 60` re-checks everything the sources still list, including articles scanned before.
+Feeds only go back so far: about 3 weeks for offshoreWIND.biz and about 1 week for most others.
 
 ## Installation sites and sailing routes
 

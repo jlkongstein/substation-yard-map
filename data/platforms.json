@@ -519,6 +519,12 @@
         "date": null,
         "title": "New shipyard for TenneT's German offshore platforms is being built in Spain",
         "url": "https://www.tennet.eu/de-en/news/new-shipyard-tennets-german-offshore-platforms-being-built-spain"
+      },
+      {
+        "date": "2026-10-16",
+        "title": "Nexans Starts Norway Cable Production for Germany's LanWin2",
+        "url": "https://offshorewindfarmprojects.com/europe/nexans-starts-cable-manufacturing-in-norway-for-germany-s-2-gw-lanwin2-offshore-grid-link",
+        "auto": true
       }
     ],
     "updated": "2026-10-23",
@@ -560,6 +566,12 @@
         "date": "2026-10-16",
         "title": "Nexans Starts Manufacturing 525 kV Subsea Cables for LanWin2 Offshore Wind Grid Connection",
         "url": "https://offshorewind.biz/2026/10/16/nexans-starts-manufacturing-525-kv-subsea-cables-for-lanwin2-offshore-wind-grid-connection",
+        "auto": true
+      },
+      {
+        "date": "2026-10-16",
+        "title": "Nexans Starts Norway Cable Production for Germany's LanWin2",
+        "url": "https://offshorewindfarmprojects.com/europe/nexans-starts-cable-manufacturing-in-norway-for-germany-s-2-gw-lanwin2-offshore-grid-link",
         "auto": true
       }
     ],
@@ -877,6 +889,12 @@
         "date": "2026-07-16",
         "title": "Iv to design topside Ostwind 4 offshore HVDC converter",
         "url": "https://ocean-energyresources.com/2026/07/16/iv-to-design-topside-ostwind-4-offshore-hvdc-converter/"
+      },
+      {
+        "date": "2026-09-24",
+        "title": "Germany's ABL Wins Baltic Sea HVDC Marine Contract",
+        "url": "https://offshorewindfarmprojects.com/europe/hamburg-consultancy-abl-wins-marine-assurance-contract-for-baltic-sea-s-first-hvdc-transmission-project",
+        "auto": true
       }
     ],
     "updated": "2026-10-23",
@@ -1050,6 +1068,12 @@
         "date": "2026-05",
         "title": "First Hornsea 3 Offshore Converter Station successfully installed",
         "url": "https://orsted.co.uk/media/newsroom/news/2026/05/first-hornsea-3-offshore-converter-station-successfully-installed"
+      },
+      {
+        "date": "2026-10-12",
+        "title": "OEG Secures Ørsted Temporary Power Contract",
+        "url": "https://offshorewindfarmprojects.com/europe/oeg-secures-orsted-temporary-power-contract-for-hornsea-3-offshore-wind-farm",
+        "auto": true
       }
     ],
     "updated": "2026-10-23",
@@ -1094,6 +1118,12 @@
         "date": "2026-09-22",
         "title": "Hornsea 3 Reaches Milestone as Ørsted Installs Both Converter Stations",
         "url": "https://ecomagazine.com/news/industry/hornsea-3-reaches-milestone-as-orsted-installs-both-converter-stations"
+      },
+      {
+        "date": "2026-10-12",
+        "title": "OEG Secures Ørsted Temporary Power Contract",
+        "url": "https://offshorewindfarmprojects.com/europe/oeg-secures-orsted-temporary-power-contract-for-hornsea-3-offshore-wind-farm",
+        "auto": true
       }
     ],
     "updated": "2026-10-23",
@@ -1194,6 +1224,24 @@
         "title": "Gennaker installs two offshore substations",
         "url": "https://transformer-magazine.com/news/gennaker-installs-two-offshore-substations/",
         "auto": true
+      },
+      {
+        "date": "2026-10-09",
+        "title": "Offshore Substations for Gennaker Wind Farm En Route to Baltic Sea (VIDEO)",
+        "url": "https://offshorewind.biz/2026/10/09/offshore-substations-for-gennaker-wind-farm-en-route-to-baltic-sea-video",
+        "auto": true
+      },
+      {
+        "date": "2026-10-19",
+        "title": "50Hertz installs substations for 927-MW Gennaker offshore wind farm",
+        "url": "https://renewablesnow.com/news/50hertz-installs-substations-for-927-mw-gennaker-offshore-wind-farm-1303235",
+        "auto": true
+      },
+      {
+        "date": "2026-10-09",
+        "title": "Two Offshore Substations Sail from Dutch Yards",
+        "url": "https://offshorewindfarmprojects.com/europe/two-offshore-substations-sail-dutch-yards-german-baltic-sea-grid-project",
+        "auto": true
       }
     ],
     "updated": "2026-10-23",
@@ -1243,6 +1291,24 @@
         "date": "2026-10-20",
         "title": "Gennaker installs two offshore substations",
         "url": "https://transformer-magazine.com/news/gennaker-installs-two-offshore-substations/",
+        "auto": true
+      },
+      {
+        "date": "2026-10-09",
+        "title": "Offshore Substations for Gennaker Wind Farm En Route to Baltic Sea (VIDEO)",
+        "url": "https://offshorewind.biz/2026/10/09/offshore-substations-for-gennaker-wind-farm-en-route-to-baltic-sea-video",
+        "auto": true
+      },
+      {
+        "date": "2026-10-19",
+        "title": "50Hertz installs substations for 927-MW Gennaker offshore wind farm",
+        "url": "https://renewablesnow.com/news/50hertz-installs-substations-for-927-mw-gennaker-offshore-wind-farm-1303235",
+        "auto": true
+      },
+      {
+        "date": "2026-10-09",
+        "title": "Two Offshore Substations Sail from Dutch Yards",
+        "url": "https://offshorewindfarmprojects.com/europe/two-offshore-substations-sail-dutch-yards-german-baltic-sea-grid-project",
         "auto": true
       }
     ],

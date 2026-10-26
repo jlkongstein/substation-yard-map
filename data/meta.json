@@ -1,6 +1,59 @@
 {
-  "last_updated": "2026-10-23",
+  "last_updated": "2026-10-26",
   "changelog": [
+    {
+      "date": "2026-10-26",
+      "summary": "News scan: 7 article(s) matched to platforms, 2 unmatched relevant article(s).",
+      "changes": [
+        {
+          "ids": [
+            "gennaker-zingst",
+            "gennaker-darss"
+          ],
+          "description": "News: Offshore Substations for Gennaker Wind Farm En Route to Baltic Sea (VIDEO)",
+          "url": "https://offshorewind.biz/2026/10/09/offshore-substations-for-gennaker-wind-farm-en-route-to-baltic-sea-video"
+        },
+        {
+          "ids": [
+            "gennaker-zingst",
+            "gennaker-darss"
+          ],
+          "description": "News: 50Hertz installs substations for 927-MW Gennaker offshore wind farm",
+          "url": "https://renewablesnow.com/news/50hertz-installs-substations-for-927-mw-gennaker-offshore-wind-farm-1303235"
+        },
+        {
+          "ids": [
+            "balwin3",
+            "lanwin2"
+          ],
+          "description": "News: Nexans Starts Norway Cable Production for Germany's LanWin2",
+          "url": "https://offshorewindfarmprojects.com/europe/nexans-starts-cable-manufacturing-in-norway-for-germany-s-2-gw-lanwin2-offshore-grid-link"
+        },
+        {
+          "ids": [
+            "hornsea-3-link-1",
+            "hornsea-3-link-2"
+          ],
+          "description": "News: OEG Secures Ørsted Temporary Power Contract",
+          "url": "https://offshorewindfarmprojects.com/europe/oeg-secures-orsted-temporary-power-contract-for-hornsea-3-offshore-wind-farm"
+        },
+        {
+          "ids": [
+            "gennaker-zingst",
+            "gennaker-darss"
+          ],
+          "description": "News: Two Offshore Substations Sail from Dutch Yards",
+          "url": "https://offshorewindfarmprojects.com/europe/two-offshore-substations-sail-dutch-yards-german-baltic-sea-grid-project"
+        },
+        {
+          "ids": [
+            "ostwind4"
+          ],
+          "description": "News: Germany's ABL Wins Baltic Sea HVDC Marine Contract",
+          "url": "https://offshorewindfarmprojects.com/europe/hamburg-consultancy-abl-wins-marine-assurance-contract-for-baltic-sea-s-first-hvdc-transmission-project"
+        }
+      ]
+    },
     {
       "date": "2026-10-23",
       "summary": "News scan: 2 article(s) matched to platforms, 3 unmatched relevant article(s).",
