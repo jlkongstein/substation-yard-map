@@ -3,6 +3,33 @@
   "changelog": [
     {
       "date": "2026-10-26",
+      "summary": "News scan: 3 article(s) matched to platforms, 6 unmatched relevant article(s).",
+      "changes": [
+        {
+          "ids": [
+            "lanwin2"
+          ],
+          "description": "News: Nexans, Red Eléctrica to tie Mallorca and Menorca closer with new Balearic power link",
+          "url": "https://offshore-energy.biz/2026/10/22/nexans-red-electrica-to-tie-mallorca-and-menorca-closer-with-new-balearic-power-link"
+        },
+        {
+          "ids": [
+            "baltica-2"
+          ],
+          "description": "News: Topsides of baltica 2 offshore substations depart vietnam for poland",
+          "url": "https://renewablesnow.com/news/topsides-of-baltica-2-offshore-substations-depart-vietnam-for-poland-1301485"
+        },
+        {
+          "ids": [
+            "ostwind4"
+          ],
+          "description": "News: 50Hertz Taps ABL for Ostwind 4 Marine Assurance",
+          "url": "https://www.marinelink.com/news/hertz-taps-abl-ostwind-marine-assurance-543238"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-26",
       "summary": "News scan: 7 article(s) matched to platforms, 2 unmatched relevant article(s).",
       "changes": [
         {
