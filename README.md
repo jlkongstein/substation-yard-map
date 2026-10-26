@@ -16,6 +16,7 @@ Jacket-only yards are hidden by default; there's a checkbox to show them.
 | `data/meta.json` | Last-updated date and the weekly changelog shown under "What's new" |
 | `data/news_seen.json` | Articles already scanned, so weekly runs don't repeat them |
 | `updater/news_scan.py` | Free weekly news scan (RSS + name matching, no AI, standard library only) |
+| `updater/check_data.py` | Duplicate guard: merges repeated news, blocks duplicate platforms/yards |
 | `updater/apply.py` | Confirms or dismisses a suggested status change |
 | `.github/workflows/weekly-update.yml` | Runs the scan every Monday, commits data, opens a GitHub issue |
 | `.github/workflows/apply-change.yml` | "Apply status change" form for accepting suggestions |
@@ -73,6 +74,22 @@ the pencil icon. Copy an existing entry as a template.
 
 Manual run: `python updater/news_scan.py --dry-run` prints the report without changing anything.
 `--rescan` re-checks articles already scanned before. `--archive-months 6` adds the deep search.
+
+## Duplicate guard
+
+`updater/check_data.py` runs before every data commit: the weekly scan, the deep search and
+"Apply status change". It also runs whenever someone edits files in `data/` directly on GitHub.
+
+- **Repeated news is merged automatically.** This covers the same address (ignoring http/www,
+  trailing slashes and tracking codes), the same headline, and the same story from another outlet
+  within 3 days, recognised by shared distinctive words. The extra copy is kept as an "also reported
+  by" link, so nothing is lost. Repeated changelog lines are merged too.
+- **A possible duplicate platform or yard stops the run.** Examples: a reused id, the same name
+  twice, the same project at the same site and yard, or two yards of one company within 1.5 km.
+  Nothing is committed and GitHub emails you, because only a person can decide whether it's really
+  one platform. Sister platforms of one project, such as two converter links, are not flagged.
+
+Run it yourself with `python updater/check_data.py` (report only) or `--fix`.
 
 ## Installation sites and sailing routes
 

@@ -39,6 +39,8 @@ jobs:
         run: |
           echo "Deep search months: $DEEP"
           python updater/news_scan.py --report "$RUNNER_TEMP/report.md" --archive-months "$DEEP" $RESCAN
+      - name: Duplicate check (merges repeated news; stops the run on duplicate platforms/yards)
+        run: python updater/check_data.py --fix
       - name: Commit data changes
         run: |
           if git diff --quiet -- data && [ -z "$(git ls-files --others --exclude-standard data)" ]; then

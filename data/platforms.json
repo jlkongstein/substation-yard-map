@@ -566,13 +566,14 @@
         "date": "2026-10-16",
         "title": "Nexans Starts Manufacturing 525 kV Subsea Cables for LanWin2 Offshore Wind Grid Connection",
         "url": "https://offshorewind.biz/2026/10/16/nexans-starts-manufacturing-525-kv-subsea-cables-for-lanwin2-offshore-wind-grid-connection",
-        "auto": true
-      },
-      {
-        "date": "2026-10-16",
-        "title": "Nexans Starts Norway Cable Production for Germany's LanWin2",
-        "url": "https://offshorewindfarmprojects.com/europe/nexans-starts-cable-manufacturing-in-norway-for-germany-s-2-gw-lanwin2-offshore-grid-link",
-        "auto": true
+        "auto": true,
+        "also": [
+          {
+            "title": "Nexans Starts Norway Cable Production for Germany's LanWin2",
+            "url": "https://offshorewindfarmprojects.com/europe/nexans-starts-cable-manufacturing-in-norway-for-germany-s-2-gw-lanwin2-offshore-grid-link",
+            "date": "2026-10-16"
+          }
+        ]
       },
       {
         "date": "2026-10-22",
@@ -862,17 +863,19 @@
       {
         "date": "2026-06",
         "title": "50Hertz Picks Siemens Energy-NSORe Team for 2GW North Sea Converter Platform",
-        "url": "https://www.oedigital.com/amp/news/540397-50hertz-picks-siemens-energy-nsore-team-for-2gw-north-sea-converter-platform"
-      },
-      {
-        "date": "2026-06-17",
-        "title": "50Hertz awards 2 GW offshore platform contract to Siemens Energy, NSORe",
-        "url": "https://renewablesnow.com/news/50hertz-awards-2-gw-offshore-platform-contract-to-siemens-energy-nsore-1296610"
-      },
-      {
-        "date": "2026-06-17",
-        "title": "Siemens Energy to build 2 GW converter platform with German shipyard",
-        "url": "https://www.energyglobal.com/wind/17062026/siemens-energy-to-build-2-gw-converter-platform-with-german-shipyard/"
+        "url": "https://www.oedigital.com/amp/news/540397-50hertz-picks-siemens-energy-nsore-team-for-2gw-north-sea-converter-platform",
+        "also": [
+          {
+            "title": "50Hertz awards 2 GW offshore platform contract to Siemens Energy, NSORe",
+            "url": "https://renewablesnow.com/news/50hertz-awards-2-gw-offshore-platform-contract-to-siemens-energy-nsore-1296610",
+            "date": "2026-06-17"
+          },
+          {
+            "title": "Siemens Energy to build 2 GW converter platform with German shipyard",
+            "url": "https://www.energyglobal.com/wind/17062026/siemens-energy-to-build-2-gw-converter-platform-with-german-shipyard/",
+            "date": "2026-06-17"
+          }
+        ]
       }
     ],
     "updated": "2026-10-26",
@@ -914,13 +917,14 @@
         "date": "2026-09-24",
         "title": "Germany's ABL Wins Baltic Sea HVDC Marine Contract",
         "url": "https://offshorewindfarmprojects.com/europe/hamburg-consultancy-abl-wins-marine-assurance-contract-for-baltic-sea-s-first-hvdc-transmission-project",
-        "auto": true
-      },
-      {
-        "date": "2026-09-24",
-        "title": "50Hertz Taps ABL for Ostwind 4 Marine Assurance",
-        "url": "https://www.marinelink.com/news/hertz-taps-abl-ostwind-marine-assurance-543238",
-        "auto": true
+        "auto": true,
+        "also": [
+          {
+            "title": "50Hertz Taps ABL for Ostwind 4 Marine Assurance",
+            "url": "https://www.marinelink.com/news/hertz-taps-abl-ostwind-marine-assurance-543238",
+            "date": "2026-09-24"
+          }
+        ]
       }
     ],
     "updated": "2026-10-23",
@@ -1962,12 +1966,14 @@
       {
         "date": "2025-03",
         "title": "Ocean Winds, CRIST Offshore ink offshore Poland substation agreement",
-        "url": "https://www.offshore-mag.com/renewable-energy/news/55278965/ocean-winds-ocean-winds-crist-offshore-ink-offshore-poland-substation-agreement"
-      },
-      {
-        "date": "2025-03",
-        "title": "Ocean Winds selects CRIST Offshore as Tier 1 supplier for the BC-Wind offshore substation",
-        "url": "https://www.oceanwinds.com/news/uncategorized/ocean-winds-selects-crist-offshore-as-a-tier-1-supplier-for-the-construction-of-the-offshore-substation-for-the-bc-wind-offshore-wind-project/"
+        "url": "https://www.offshore-mag.com/renewable-energy/news/55278965/ocean-winds-ocean-winds-crist-offshore-ink-offshore-poland-substation-agreement",
+        "also": [
+          {
+            "title": "Ocean Winds selects CRIST Offshore as Tier 1 supplier for the BC-Wind offshore substation",
+            "url": "https://www.oceanwinds.com/news/uncategorized/ocean-winds-selects-crist-offshore-as-a-tier-1-supplier-for-the-construction-of-the-offshore-substation-for-the-bc-wind-offshore-wind-project/",
+            "date": "2025-03"
+          }
+        ]
       }
     ],
     "site": {

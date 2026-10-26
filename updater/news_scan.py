@@ -312,6 +312,9 @@ def main() -> int:
                     help="deep search: also go through this many months of the sources' sitemaps")
     args = ap.parse_args()
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    global same_story, norm_url
+    from check_data import norm_url, same_story  # noqa: F811 (shared duplicate rules)
 
     platforms, yards, meta = load("platforms.json"), load("yards.json"), load("meta.json")
     seen = load("news_seen.json", [])
@@ -402,10 +405,16 @@ def main() -> int:
         added_to = []
         for pid in hits:
             p = by_id[pid]
-            known = {s["url"] for s in p.get("sources", [])} | {story_key(s["title"]) for s in p.get("sources", [])}
-            if art["url"] not in known and story_key(art["title"]) not in known:
-                p.setdefault("sources", []).append({"date": art["date"], "title": art["title"], "url": art["url"], "auto": True})
+            new = {"date": art["date"], "title": art["title"], "url": art["url"], "auto": True}
+            # Same story already stored (same address, headline, or another outlet's report of it)?
+            # Then keep it as an "also reported by" link instead of a second news item.
+            twin = next((s for s in p.get("sources", []) if same_story(s, new)), None)
+            if twin is None:
+                p.setdefault("sources", []).append(new)
                 added_to.append(pid)
+            elif norm_url(twin["url"]) != norm_url(new["url"]) and all(
+                    norm_url(x["url"]) != norm_url(new["url"]) for x in twin.get("also", [])):
+                twin.setdefault("also", []).append({k: new[k] for k in ("title", "url", "date")})
             # Status suggestions only when the platform is named in the headline/summary itself.
             if matches(headline, matchers[pid]) and TOPSIDE_TERMS.search(headline):
                 s = suggest_status(art["title"] + " " + art["summary"], p["status"])
@@ -453,6 +462,9 @@ def main() -> int:
         meta["last_updated"] = today
         meta["changelog"] = ([{"date": today, "summary": summary, "changes": changes}] + meta.get("changelog", []))[:CHANGELOG_KEEP]
     seen = (seen + [c["url"] for c in candidates if c["url"] not in set(seen)])[-SEEN_KEEP:]
+    from check_data import merge_sources  # final safety net: no story twice on a platform
+    for p in platforms:
+        p["sources"], _ = merge_sources(p.get("sources", []))
     save("platforms.json", platforms)
     save("meta.json", meta)
     save("news_seen.json", seen)

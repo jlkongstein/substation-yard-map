@@ -1,0 +1,37 @@
+name: Check data for duplicates
+
+# Runs whenever data is changed by hand (e.g. editing data/platforms.json on GitHub). If a platform
+# or yard looks like it is in the data twice, the run fails and GitHub emails you; repeated news
+# items are merged automatically.
+on:
+  push:
+    paths: ["data/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: data-writes
+  cancel-in-progress: false
+
+jobs:
+  check:
+    # Bot commits were already checked inside the workflow that made them.
+    if: github.actor != 'github-actions[bot]' && !contains(github.event.head_commit.author.name, 'yard-map-bot')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Duplicate check
+        run: python updater/check_data.py --fix
+      - name: Commit merged news items
+        run: |
+          if git diff --quiet -- data; then exit 0; fi
+          git config user.name "yard-map-bot"
+          git config user.email "yard-map-bot@users.noreply.github.com"
+          git add data
+          git commit -m "Merge duplicate news items"
+          git push

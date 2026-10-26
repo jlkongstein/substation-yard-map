@@ -331,7 +331,9 @@ function showPlatform(id, { fly = true } = {}) {
   }).join("");
   const voyage = drawVoyage(p);
   const src = [...(p.sources || [])].sort((a, b) => (b.date || "").localeCompare(a.date || ""))
-    .map((s) => `<li>${s.date ? `<span class="m">${esc(s.date)}</span> ` : ""}<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a></li>`).join("");
+    .map((s) => `<li>${s.date ? `<span class="m">${esc(s.date)}</span> ` : ""}<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>${
+      (s.also || []).length ? `<br><span class="m">also reported by ${(s.also).map((a) =>
+        `<a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(new URL(a.url).hostname.replace(/^www\./, ""))}</a>`).join(", ")}</span>` : ""}</li>`).join("");
 
   $("detailBody").innerHTML = `
     <h2>${esc(p.name)}</h2>

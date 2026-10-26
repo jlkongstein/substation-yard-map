@@ -51,6 +51,8 @@ jobs:
           NOTE: ${{ inputs.note }}
           SOURCE_URL: ${{ inputs.source_url }}
         run: python updater/apply.py "$PLATFORM_ID" "$ACTION" --note "$NOTE" --url "$SOURCE_URL"
+      - name: Duplicate check
+        run: python updater/check_data.py --fix
       - name: Commit
         run: |
           git config user.name "yard-map-bot"
