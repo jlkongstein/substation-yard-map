@@ -29,26 +29,40 @@ python -m http.server 8790
 Then open http://localhost:8790. Opening `index.html` directly from disk won't work, because the browser
 blocks `fetch` of the JSON files.
 
-## Weekly news scan (free)
+## Weekly news scan and monthly deep search (free)
 
-Every Monday at 05:00 UTC, GitHub Actions runs `updater/news_scan.py`. It costs nothing and needs no API keys.
+Both run on GitHub Actions, which is free for public repositories, and need no API keys.
 
-1. It reads eight sources: offshoreWIND.biz, Offshore Energy, Renewables Now, OE Digital, Recharge,
-   Windpower Monthly, MarineLink and offshorewindfarmprojects.com. Sites with an RSS feed are read from
-   the feed. For Recharge, OE Digital and offshorewindfarmprojects.com, which have no usable feed, it
-   reads the article links on their news pages. It keeps new articles that look substation-related. The
-   list is `SOURCES` in `updater/news_scan.py`. OE Digital currently blocks automated readers, so it
-   adds nothing. Its sister site MarineLink carries much of the same news.
-2. It opens each article and matches it to platforms by name. Names come from each platform's `name`
-   and `project`, plus an optional `aliases` list, e.g. `["BorWin6", "BorWin kappa"]`.
-3. Matched articles are added to the platform's sources and appear under "What's new" on the site.
-4. If a headline uses milestone wording such as "first steel", "rolled out", "sets sail" or "installed",
-   the platform gets a **suggested** status. The site shows it as "possible update", but the status
-   doesn't change until you confirm it.
-5. The scan opens a GitHub issue each week (you get it by email) listing:
-   - suggested status changes;
-   - news added to platforms;
-   - relevant offshore articles that matched no platform, which may be new projects or yards.
+**Every Monday (05:00 UTC)**, `updater/news_scan.py`:
+
+1. Reads the latest articles from eight sources: offshoreWIND.biz, Offshore Energy, Renewables Now,
+   OE Digital, Recharge, Windpower Monthly, MarineLink and offshorewindfarmprojects.com. Sites with an
+   RSS feed are read from the feed. For the others, it reads the article links on their news pages. The
+   list is `SOURCES` in `updater/news_scan.py`.
+2. Opens **every** new article and reads it in full, not just the headline, so a mention buried in an
+   article about something else still counts. About 150–250 articles a week, a few minutes per run.
+3. Attaches an article to a platform when the platform is named in it and the article is about the
+   substation itself (substation, topside, converter platform, HVDC…). News about turbines, monopiles
+   or power deals for the same wind farm is ignored. Installed platforms are out of scope.
+4. If a headline uses milestone wording about the substation ("first steel", "rolled out", "sets sail",
+   "installed"…), the platform gets a **suggested** status. The site shows it as "possible update", but
+   the status doesn't change until you confirm it.
+5. Opens a GitHub issue (you get it by email) listing suggested status changes, news added to platforms,
+   and relevant offshore articles that matched no platform, which may be new projects or yards.
+
+**On the 1st of each month (06:00 UTC)**, a **deep search** also goes through 6 months of the sites'
+archives, using the sitemaps they publish for search engines (Renewables Now, Windpower Monthly,
+Recharge, MarineLink). It looks for article addresses naming a tracked platform, yard or substation
+term, then opens those articles. You can also run it by hand: **Actions → Weekly news scan → Run
+workflow**, then set "Deep search: months" (e.g. 12) and optionally tick "Re-check articles".
+
+What the scans can't reach:
+- Sites' own search pages put their results in with JavaScript, so they can't be read.
+- offshoreWIND.biz, Offshore Energy and offshorewindfarmprojects.com publish no article sitemaps, so for
+  them only their feeds or news pages are read (about 1–3 weeks back).
+- Recharge and Windpower Monthly are partly paywalled, so only the free part of each article is read.
+- OE Digital sometimes refuses automated readers. The scan identifies itself honestly and never tries to
+  get around such blocks.
 
 **Confirming a suggestion:** on GitHub, go to **Actions → Apply status change → Run workflow**. Enter
 the platform id from the issue and choose *Accept suggestion*, *Dismiss suggestion* or a specific
@@ -58,8 +72,7 @@ status.
 the pencil icon. Copy an existing entry as a template.
 
 Manual run: `python updater/news_scan.py --dry-run` prints the report without changing anything.
-`--rescan --days 60` re-checks everything the sources still list, including articles scanned before.
-Feeds only go back so far: about 3 weeks for offshoreWIND.biz and about 1 week for most others.
+`--rescan` re-checks articles already scanned before. `--archive-months 6` adds the deep search.
 
 ## Installation sites and sailing routes
 

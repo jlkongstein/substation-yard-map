@@ -2,8 +2,18 @@ name: Weekly news scan
 
 on:
   schedule:
-    - cron: "0 5 * * 1"   # Mondays 05:00 UTC
+    - cron: "0 5 * * 1"   # every Monday 05:00 UTC: weekly scan (every article read in full)
+    - cron: "0 6 1 * *"   # 1st of each month 06:00 UTC: deep search through 6 months of site archives
   workflow_dispatch:       # "Run workflow" button for manual runs
+    inputs:
+      deep_months:
+        description: "Deep search: months of site archives to search (0 = normal weekly scan)"
+        required: false
+        default: "0"
+      rescan:
+        description: "Re-check articles that were already scanned before"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -16,14 +26,19 @@ concurrency:
 jobs:
   scan:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Scan news feeds
-        run: python updater/news_scan.py --report "$RUNNER_TEMP/report.md"
+      - name: Scan news sources
+        env:
+          DEEP: ${{ github.event.schedule == '0 6 1 * *' && '6' || inputs.deep_months || '0' }}
+          RESCAN: ${{ inputs.rescan && '--rescan' || '' }}
+        run: |
+          echo "Deep search months: $DEEP"
+          python updater/news_scan.py --report "$RUNNER_TEMP/report.md" --archive-months "$DEEP" $RESCAN
       - name: Commit data changes
         run: |
           if git diff --quiet -- data && [ -z "$(git ls-files --others --exclude-standard data)" ]; then
@@ -33,14 +48,15 @@ jobs:
           git config user.name "yard-map-bot"
           git config user.email "yard-map-bot@users.noreply.github.com"
           git add data
-          git commit -m "Weekly news scan $(date -u +%Y-%m-%d)"
+          git commit -m "News scan $(date -u +%Y-%m-%d)"
           git push
-      - name: Open weekly issue
+      - name: Open issue with the results
         env:
           GH_TOKEN: ${{ github.token }}
+          KIND: ${{ (github.event.schedule == '0 6 1 * *' || (inputs.deep_months && inputs.deep_months != '0')) && 'Deep search' || 'News scan' }}
         run: |
           if grep -q "^## " "$RUNNER_TEMP/report.md"; then
-            gh issue create --title "News scan $(date -u +%Y-%m-%d)" --body-file "$RUNNER_TEMP/report.md"
+            gh issue create --title "$KIND $(date -u +%Y-%m-%d)" --body-file "$RUNNER_TEMP/report.md"
           else
-            echo "Nothing to report this week."
+            echo "Nothing to report."
           fi

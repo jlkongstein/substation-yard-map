@@ -23,7 +23,9 @@ import json
 import re
 import sys
 import unicodedata
+import time
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
@@ -37,16 +39,21 @@ CHANGELOG_KEEP = 60
 
 # News sources. "rss" sources are read from their feed; "pages" sources have no usable feed, so the
 # article links on their news listing pages are collected (matching "link") and each article's date
-# is read from the article itself.
+# is read from the article itself. "sitemaps" (the lists sites publish for search engines) are used
+# for the deep search (--archive-months); {yyyy}/{mm} templates are expanded per month.
 SOURCES = [
     {"name": "offshoreWIND.biz", "rss": ["https://www.offshorewind.biz/feed/"]},
     {"name": "Offshore Energy", "rss": ["https://www.offshore-energy.biz/feed/"]},
-    {"name": "Renewables Now", "rss": ["https://renewablesnow.com/feeds/offshore-wind/", "https://renewablesnow.com/feeds/europe/"]},
+    {"name": "Renewables Now", "rss": ["https://renewablesnow.com/feeds/offshore-wind/", "https://renewablesnow.com/feeds/europe/"],
+     "sitemaps": ["https://renewablesnow.com/sitemap/news-{yyyy}-{mm}.xml"]},
     {"name": "OE Digital", "pages": ["https://www.oedigital.com/"], "link": r"(?:https://www\.oedigital\.com)?/news/\d+-[a-z0-9-]+"},
     {"name": "Recharge", "pages": ["https://www.rechargenews.com/wind", "https://www.rechargenews.com/latest"],
-     "link": r"(?:https://www\.rechargenews\.com)?/[a-z0-9-]+/[a-z0-9-]+/2-1-\d+"},
-    {"name": "Windpower Monthly", "rss": ["https://www.windpowermonthly.com/rss/news"]},
-    {"name": "MarineLink", "rss": ["https://www.marinelink.com/news/rss", "https://www.marinelink.com/news/rss/offshore-wind"]},
+     "link": r"(?:https://www\.rechargenews\.com)?/[a-z0-9-]+/[a-z0-9-]+/2-1-\d+",
+     "sitemaps": ["https://www.rechargenews.com/sitemap/news.xml"]},
+    {"name": "Windpower Monthly", "rss": ["https://www.windpowermonthly.com/rss/news"],
+     "sitemaps": ["https://www.windpowermonthly.com/sitemap/WPW/articles_{yyyy}_{mm}.xml"]},
+    {"name": "MarineLink", "rss": ["https://www.marinelink.com/news/rss", "https://www.marinelink.com/news/rss/offshore-wind"],
+     "sitemaps": ["https://www.marinelink.com/news/sitemap.xml"]},
     {"name": "offshorewindfarmprojects.com",
      "pages": ["https://offshorewindfarmprojects.com/", "https://offshorewindfarmprojects.com/europe",
                "https://offshorewindfarmprojects.com/asia-pacific"],
@@ -62,6 +69,10 @@ CANDIDATE = re.compile(
     r"PTSC|MMHE|Larsen|L&T|Chantiers de l.Atlantique|Navantia|Harland|Heerema Fabrication|NSORe|Neptun Werft|Meyer Werft",
     re.IGNORECASE,
 )
+# Wording that shows an article is about the substation itself, not the wider wind farm
+# (turbines, monopiles, power deals, stakes...).
+TOPSIDE_TERMS = re.compile(r"substation|topside|converter (?:platform|station)|\bOSS\b|\bOSP\b|HVDC|offshore platform|"
+                           r"grid connection|transmission (?:platform|link|asset)", re.I)
 # Stricter test for listing an unmatched article in the report (keeps the issue short).
 CORE = re.compile(r"substation|topside|converter (?:platform|station)|\bOSS\b|\bOSP\b|HVDC platform|offshore platform", re.I)
 
@@ -125,9 +136,10 @@ def fetch_feed(url: str, since: dt.datetime) -> list[dict]:
             when = None
         if when and when.astimezone(dt.timezone.utc) < since:
             continue
-        if CANDIDATE.search(f"{title} {summary}"):
-            items.append({"title": title, "url": clean_url(_text(it, "link")), "summary": summary,
-                          "date": when.date().isoformat() if when else dt.date.today().isoformat()})
+        # Every article is kept and read in full later: a buried mention in an article about
+        # something else (results, vessels, policy) counts too.
+        items.append({"title": title, "url": clean_url(_text(it, "link")), "summary": summary,
+                      "date": when.date().isoformat() if when else dt.date.today().isoformat()})
     return items
 
 
@@ -148,8 +160,48 @@ def fetch_listing(src: dict) -> list[dict]:
         if not title:  # fall back to the URL slug
             slug = re.sub(r"/2-1-\d+$|^/news/\d+-", "", url.split("/", 3)[-1]).rsplit("/", 1)[-1]
             title = slug.replace("-", " ").capitalize()
-        if CANDIDATE.search(title):
-            items.append({"title": title, "url": clean_url(url), "summary": "", "date": None})
+        items.append({"title": title, "url": clean_url(url), "summary": "", "date": None})
+    return items
+
+
+def month_list(n: int) -> list[tuple[int, int]]:
+    y, m = dt.date.today().year, dt.date.today().month
+    out = []
+    for _ in range(n):
+        out.append((y, m))
+        y, m = (y, m - 1) if m > 1 else (y - 1, 12)
+    return out
+
+
+def fetch_sitemaps(src: dict, months: int, wanted) -> list[dict]:
+    """Deep search: article URLs from a source's sitemaps (published for automated readers) whose
+    address mentions a tracked platform, yard or substation term. Only those articles get opened."""
+    urls = []
+    for tpl in src.get("sitemaps", []):
+        if "{yyyy}" in tpl:
+            urls += [tpl.format(yyyy=y, mm=f"{m:02d}") for y, m in month_list(months)]
+        else:
+            urls.append(tpl)
+    items = []
+    for sm in urls:
+        try:
+            raw = get(sm).decode("utf-8", "replace")
+        except Exception:
+            continue  # a month without a sitemap (or not yet published) is fine
+        for block in re.findall(r"<url>(.*?)</url>", raw, re.S) or re.findall(r"(<loc>.*?</loc>)", raw):
+            loc_m = re.search(r"<loc>\s*([^<\s]+)\s*</loc>", block)
+            if not loc_m:
+                continue
+            loc = loc_m.group(1)
+            d = re.search(r"<(?:news:publication_date|lastmod)>\s*(\d{4}-\d{2}-\d{2})", block)
+            parts = loc.rstrip("/").split("/")
+            # Pick the descriptive part of the address (skip trailing ids like 2-1-1935592 or 1234567).
+            slug = next((x for x in reversed(parts) if re.search(r"[a-z].*-.*[a-z]", x)), parts[-1])
+            words = re.sub(r"\s+\d{5,}$", "", re.sub(r"[-_]+", " ", slug))
+            if wanted(fold(words)):
+                items.append({"title": words.capitalize(), "url": clean_url(html.unescape(loc)), "summary": "",
+                              "date": None, "archive": True, "sitemap_date": d.group(1) if d else None})
+        time.sleep(0.3)
     return items
 
 
@@ -163,11 +215,13 @@ def clean_url(url: str) -> str:
     """Drop tracking parameters (utm_*) so the same article isn't stored twice."""
     base, _, query = url.partition("?")
     keep = [q for q in query.split("&") if q and not q.lower().startswith("utm_")]
-    return base.rstrip("/") + ("?" + "&".join(keep) if keep else "") if query else url
+    return base.rstrip("/") + ("?" + "&".join(keep) if keep else "")
 
 
 def page_title(page: str) -> str | None:
-    m = re.search(r'property="og:title"\s+content="([^"]+)"', page, re.I) or re.search(r"<title[^>]*>(.*?)</title>", page, re.I | re.S)
+    m = (re.search(r'property="og:title"\s+content="([^"]+)"', page, re.I)
+         or re.search(r'content="([^"]+)"\s+property="og:title"', page, re.I)
+         or re.search(r"<title[^>]*>(.*?)</title>", page, re.I | re.S))
     return html.unescape(m.group(1)).split(" | ")[0].strip() if m else None
 
 
@@ -254,6 +308,8 @@ def main() -> int:
     ap.add_argument("--report", default="news-report.md")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--rescan", action="store_true", help="also re-check articles already scanned before")
+    ap.add_argument("--archive-months", type=int, default=0,
+                    help="deep search: also go through this many months of the sources' sitemaps")
     args = ap.parse_args()
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
@@ -261,45 +317,82 @@ def main() -> int:
     seen = load("news_seen.json", [])
     seen_set = set() if args.rescan else set(seen)
     by_id = {p["id"]: p for p in platforms}
-    matchers = build_matchers(platforms)
+    # Installed platforms are out of scope (the map tracks production), so news isn't matched to them.
+    matchers = build_matchers([p for p in platforms if p["status"] != "Installed"])
+    installed_matchers = build_matchers([p for p in platforms if p["status"] == "Installed"])
     since = dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=args.days)
     today = dt.date.today().isoformat()
 
-    candidates, feed_errors, stories, per_source = [], [], set(), {}
+    alias_pats = [pt for pats in matchers.values() for pt in pats]
+    yard_pats = [alias_pattern(n) for y in yards for n in {y["operator"], y["name"].split(" (")[0]} if len(n) >= 4]
+
+    def wanted(words: str) -> bool:
+        return bool(CANDIDATE.search(words) or any(pt.search(words) for pt in alias_pats + yard_pats))
+
+    candidates, feed_errors, stories, per_source, addresses = [], [], set(), {}, set()
     for src in SOURCES:
         found = []
-        for url in src.get("rss", []) + (["listing"] if "pages" in src else []):
+        steps = src.get("rss", []) + (["listing"] if "pages" in src else [])
+        if args.archive_months and "sitemaps" in src:
+            steps.append("sitemaps")
+        for url in steps:
             try:
-                found += fetch_listing(src) if url == "listing" else fetch_feed(url, since)
+                if url == "listing":
+                    found += fetch_listing(src)
+                elif url == "sitemaps":
+                    found += fetch_sitemaps(src, args.archive_months, wanted)
+                else:
+                    found += fetch_feed(url, since)
             except Exception as exc:  # one dead source must not stop the run
                 feed_errors.append(f"{src['name']} ({url}): {exc}")
         n = 0
         for item in found:
             key = story_key(item["title"])
             # The same press release often appears on several sites under the same headline: keep one.
-            if item["url"] and item["url"] not in seen_set and key not in stories:
+            if item["url"] and item["url"] not in seen_set and key not in stories and item["url"] not in addresses:
                 stories.add(key)
+                addresses.add(item["url"])
                 candidates.append({**item, "source": src["name"]})
                 n += 1
         per_source[src["name"]] = n
     print(f"{len(candidates)} new candidate articles: " + ", ".join(f"{k} {v}" for k, v in per_source.items()))
 
+    # Read every candidate article in full. Sites are read in parallel, but each site one article
+    # at a time with a short pause, to be polite.
+    by_source: dict[str, list] = {}
+    for art in candidates:
+        by_source.setdefault(art["source"], []).append(art)
+
+    def read_site(arts):
+        for art in arts:
+            art["_page"] = article_text(art["url"])
+            time.sleep(0.5)
+
+    with ThreadPoolExecutor(max_workers=max(1, len(by_source))) as pool:
+        list(pool.map(read_site, by_source.values()))
+
     matched, suggestions, unmatched, changes = [], [], [], []
     scanned = []
     for art in candidates:
-        text, published, headline_on_page = article_text(art["url"])
+        text, published, headline_on_page = art.pop("_page")
         if not art["date"]:
-            # Listing-page articles: date and clean headline from the article itself; skip ones outside the window.
-            if published and published < since.date().isoformat():
+            # Listing/sitemap articles: date and clean headline from the article itself.
+            if published and published < since.date().isoformat() and not art.get("archive"):
                 continue
-            art["date"] = published or today
+            art["date"] = published or art.get("sitemap_date") or today
             if headline_on_page:
                 art["title"] = headline_on_page
         scanned.append(art)
         headline = fold(f"{art['title']} {art['summary']}")
         body = fold(text)
-        hits = [pid for pid, pats in matchers.items() if matches(headline, pats) or (body and matches(body, pats))]
+        # A platform named in the headline always counts; one named only in the body counts when the
+        # article mentions substations/HVDC/yards at all (avoids e.g. a port story mentioning Dunkirk).
+        about_topsides = bool(TOPSIDE_TERMS.search(headline) or (body and TOPSIDE_TERMS.search(body)))
+        hits = [pid for pid, pats in matchers.items()
+                if about_topsides and (matches(headline, pats) or (body and matches(body, pats)))]
         if not hits:
+            if any(matches(headline, pats) or (body and matches(body, pats)) for pats in installed_matchers.values()):
+                continue  # news about an already-installed platform: out of scope, not "unmatched"
             context = headline + " " + body[:3000]
             # Onshore grid news is common in these feeds; only keep offshore stories.
             if CORE.search(context) and re.search(r"offshore", context):
@@ -314,7 +407,7 @@ def main() -> int:
                 p.setdefault("sources", []).append({"date": art["date"], "title": art["title"], "url": art["url"], "auto": True})
                 added_to.append(pid)
             # Status suggestions only when the platform is named in the headline/summary itself.
-            if matches(headline, matchers[pid]):
+            if matches(headline, matchers[pid]) and TOPSIDE_TERMS.search(headline):
                 s = suggest_status(art["title"] + " " + art["summary"], p["status"])
                 if s and (not p.get("suggested") or STATUSES.index(s) > STATUSES.index(p["suggested"]["status"])):
                     p["suggested"] = {"status": s, "date": art["date"], "title": art["title"], "url": art["url"]}
