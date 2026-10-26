@@ -3,6 +3,28 @@
   "changelog": [
     {
       "date": "2026-10-26",
+      "summary": "News scan: 5 article(s) matched to platforms, 13 unmatched relevant article(s).",
+      "changes": [
+        {
+          "ids": [
+            "baltyk-2",
+            "baltyk-3"
+          ],
+          "description": "News: First onshore cables delivered for 1.4GW Bałtyk 2 and 3 offshore wind hub",
+          "url": "https://www.windpowermonthly.com/article/1905219/first-onshore-cables-delivered-14gw-baltyk-2-3-offshore-wind-hub"
+        },
+        {
+          "ids": [
+            "rte-dunkerque",
+            "rte-oleron"
+          ],
+          "description": "News: French grid operator awards offshore substation contract for Dunkirk wind farm",
+          "url": "https://www.windpowermonthly.com/article/1899335/french-grid-operator-awards-offshore-substation-contract-dunkirk-wind-farm"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-26",
       "summary": "News scan: 3 article(s) matched to platforms, 6 unmatched relevant article(s).",
       "changes": [
         {
