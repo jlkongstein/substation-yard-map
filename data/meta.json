@@ -3,6 +3,26 @@
   "changelog": [
     {
       "date": "2026-10-26",
+      "summary": "Deep search (24 months, 8 sources): one new platform and one confirmed yard.",
+      "changes": [
+        {
+          "ids": [
+            "bc-wind"
+          ],
+          "description": "New: BC-Wind substation under construction at CRIST Offshore, Gdynia (since March 2026)",
+          "url": "https://renewablesnow.com/news/crist-offshore-starts-construction-of-bc-wind-substation-1291976"
+        },
+        {
+          "ids": [
+            "lanwin6"
+          ],
+          "description": "Yard confirmed: topside at NSORe Rostock-Warnemünde, jacket at Smulders Vlissingen; in service end 2034",
+          "url": "https://renewablesnow.com/news/50hertz-awards-2-gw-offshore-platform-contract-to-siemens-energy-nsore-1296610"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-26",
       "summary": "News scan: 5 article(s) matched to platforms, 13 unmatched relevant article(s).",
       "changes": [
         {

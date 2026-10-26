@@ -836,7 +836,7 @@
   {
     "id": "lanwin6",
     "name": "LanWin6",
-    "project": "LanWin6",
+    "project": "LanWin6 (North Sea Connector 2)",
     "client": "50Hertz",
     "site_country": "Germany",
     "type": "HVDC converter",
@@ -846,26 +846,40 @@
     "yards": [
       {
         "yard": "nsore-warnemunde",
-        "role": "Topside fabrication (yard inferred)"
+        "role": "Topside fabrication"
+      },
+      {
+        "yard": "smulders-vlissingen",
+        "role": "Jacket"
       }
     ],
     "status": "Contracted",
     "sailaway": null,
-    "cod": null,
-    "confidence": "medium",
-    "notes": "Awarded June 2026.",
+    "cod": 2034,
+    "confidence": "high",
+    "notes": "Awarded June 2026 to Siemens Energy (HVDC equipment) and NSORe (platform, EPCI). Topside built in Rostock-Warnemünde, jacket at Smulders Vlissingen. Platform ~200 km west of Sylt; in service by end 2034.",
     "sources": [
       {
         "date": "2026-06",
         "title": "50Hertz Picks Siemens Energy-NSORe Team for 2GW North Sea Converter Platform",
         "url": "https://www.oedigital.com/amp/news/540397-50hertz-picks-siemens-energy-nsore-team-for-2gw-north-sea-converter-platform"
+      },
+      {
+        "date": "2026-06-17",
+        "title": "50Hertz awards 2 GW offshore platform contract to Siemens Energy, NSORe",
+        "url": "https://renewablesnow.com/news/50hertz-awards-2-gw-offshore-platform-contract-to-siemens-energy-nsore-1296610"
+      },
+      {
+        "date": "2026-06-17",
+        "title": "Siemens Energy to build 2 GW converter platform with German shipyard",
+        "url": "https://www.energyglobal.com/wind/17062026/siemens-energy-to-build-2-gw-converter-platform-with-german-shipyard/"
       }
     ],
-    "updated": "2026-10-23",
+    "updated": "2026-10-26",
     "site": {
-      "name": "LanWin6, German North Sea",
-      "lat": 55.05,
-      "lon": 6.95,
+      "name": "LanWin6, German North Sea (~200 km W of Sylt)",
+      "lat": 54.95,
+      "lon": 5.25,
       "approx": true
     }
   },
@@ -1913,5 +1927,55 @@
       "lon": -71.1,
       "approx": true
     }
+  },
+  {
+    "id": "bc-wind",
+    "name": "BC-Wind OSS",
+    "project": "BC-Wind",
+    "client": "Ocean Winds",
+    "site_country": "Poland",
+    "type": "AC substation",
+    "capacity_mw": 500,
+    "topside_t": 2000,
+    "epc": "CRIST Offshore",
+    "yards": [
+      {
+        "yard": "crist-gdynia",
+        "role": "Topside fabrication"
+      }
+    ],
+    "status": "Fabrication",
+    "sailaway": "2027",
+    "cod": 2028,
+    "confidence": "high",
+    "notes": "Design, construction and commissioning by CRIST Offshore (contract March 2025); construction started March 2026. Wind farm up to ~500 MW; offshore installation targeted mid-2027, first power 2028.",
+    "aliases": [
+      "BC-Wind",
+      "BC Wind"
+    ],
+    "sources": [
+      {
+        "date": "2026-03-25",
+        "title": "Crist Offshore starts construction of BC-Wind substation",
+        "url": "https://renewablesnow.com/news/crist-offshore-starts-construction-of-bc-wind-substation-1291976"
+      },
+      {
+        "date": "2025-03",
+        "title": "Ocean Winds, CRIST Offshore ink offshore Poland substation agreement",
+        "url": "https://www.offshore-mag.com/renewable-energy/news/55278965/ocean-winds-ocean-winds-crist-offshore-ink-offshore-poland-substation-agreement"
+      },
+      {
+        "date": "2025-03",
+        "title": "Ocean Winds selects CRIST Offshore as Tier 1 supplier for the BC-Wind offshore substation",
+        "url": "https://www.oceanwinds.com/news/uncategorized/ocean-winds-selects-crist-offshore-as-a-tier-1-supplier-for-the-construction-of-the-offshore-substation-for-the-bc-wind-offshore-wind-project/"
+      }
+    ],
+    "site": {
+      "name": "BC-Wind, Polish Baltic Sea (off Łeba)",
+      "lat": 54.98,
+      "lon": 17.65,
+      "approx": true
+    },
+    "updated": "2026-10-26"
   }
 ]
