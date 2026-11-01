@@ -1,6 +1,71 @@
 {
-  "last_updated": "2026-10-26",
+  "last_updated": "2026-11-01",
   "changelog": [
+    {
+      "date": "2026-11-01",
+      "summary": "News scan: 10 article(s) matched to platforms, 7 unmatched relevant article(s).",
+      "changes": [
+        {
+          "ids": [
+            "ijmuiden-ver-alpha",
+            "nederwiek-1"
+          ],
+          "description": "News: DEME and Prysmian Start Cable Installation for Dutch Offshore Grid Connections",
+          "url": "https://offshorewind.biz/2026/10/29/deme-and-prysmian-start-cable-installation-for-dutch-offshore-grid-connections"
+        },
+        {
+          "ids": [
+            "baltica-2"
+          ],
+          "description": "News: PGE and Ørsted Add BGB Group to Baltica 2 Offshore Wind Team",
+          "url": "https://offshorewind.biz/2026/10/27/pge-and-orsted-add-bgb-group-to-baltica-2-offshore-wind-team"
+        },
+        {
+          "ids": [
+            "lanwin3",
+            "lanwin6"
+          ],
+          "description": "News: Fugro Wins UXO Survey Contract for German Offshore Grid Connections",
+          "url": "https://offshorewind.biz/2026/10/27/fugro-wins-uxo-survey-contract-for-german-offshore-grid-connections"
+        },
+        {
+          "ids": [
+            "baltica-2"
+          ],
+          "description": "News: DNV Finds Aker BP, Höegh Evi's Offshore CO2 Injection Concept Feasible",
+          "url": "https://www.oedigital.com/news/544001-dnv-finds-aker-bp-h-egh-evi-s-offshore-co2-injection-concept-feasible"
+        },
+        {
+          "ids": [
+            "baltica-2"
+          ],
+          "description": "News: Japan Joins Forces with Siemens Energy for Floating Offshore Wind",
+          "url": "https://www.oedigital.com/news/543998-japan-joins-forces-with-siemens-energy-for-floating-offshore-wind"
+        },
+        {
+          "ids": [
+            "baltica-2"
+          ],
+          "description": "News: Baker Hughes to Supply Subsea Production Systems for Cronos Field off Cyprus",
+          "url": "https://www.oedigital.com/news/543957-baker-hughes-to-supply-subsea-production-systems-for-cronos-field-off-cyprus"
+        },
+        {
+          "ids": [
+            "lanwin3",
+            "lanwin6"
+          ],
+          "description": "News: Fugro to sweep 200 m-wide North Sea corridors for cable routes",
+          "url": "https://offshorewindfarmprojects.com/europe/fugro-sweep-200-m-wide-north-sea-corridors-for-50-hertzs-4-gw-lanwin3-and-lanwin6-cable-routes"
+        },
+        {
+          "ids": [
+            "rte-golfe-de-fos"
+          ],
+          "description": "News: Ocergy's OCG-Wind Platform Begins Service at Culzean",
+          "url": "https://offshorewindfarmprojects.com/global/ocergys-ocg-wind-platform-begins-service-at-culzean-while-ocg-data-buoy-starts-three-year-mediterranean-mission"
+        }
+      ]
+    },
     {
       "date": "2026-10-26",
       "summary": "News scan: 0 article(s) matched to platforms.",
