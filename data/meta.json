@@ -1,6 +1,11 @@
 {
-  "last_updated": "2026-11-01",
+  "last_updated": "2026-11-02",
   "changelog": [
+    {
+      "date": "2026-11-02",
+      "summary": "News scan: 1 article(s) matched to platforms, 3 unmatched relevant article(s).",
+      "changes": []
+    },
     {
       "date": "2026-11-01",
       "summary": "News scan: 10 article(s) matched to platforms, 7 unmatched relevant article(s).",
