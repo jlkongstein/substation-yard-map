@@ -180,6 +180,11 @@
             "title": "DEME, Prysmian Start Cable Installation for Dutch Offshore Wind Grid Links",
             "url": "https://www.oedigital.com/news/543999-deme-prysmian-start-cable-installation-for-dutch-offshore-wind-grid-links",
             "date": "2026-10-29"
+          },
+          {
+            "title": "DEME and Prysmian start cable installation for Dutch offshore grid connections",
+            "url": "https://www.offshore-energy.biz/2026/11/03/deme-and-prysmian-start-cable-installation-for-dutch-offshore-grid-connections",
+            "date": "2026-11-03"
           }
         ]
       }
@@ -232,6 +237,11 @@
             "title": "DEME, Prysmian Start Cable Installation for Dutch Offshore Wind Grid Links",
             "url": "https://www.oedigital.com/news/543999-deme-prysmian-start-cable-installation-for-dutch-offshore-wind-grid-links",
             "date": "2026-10-29"
+          },
+          {
+            "title": "DEME and Prysmian start cable installation for Dutch offshore grid connections",
+            "url": "https://www.offshore-energy.biz/2026/11/03/deme-and-prysmian-start-cable-installation-for-dutch-offshore-grid-connections",
+            "date": "2026-11-03"
           }
         ]
       }
@@ -869,6 +879,19 @@
         "title": "Fugro to sweep 200 m-wide North Sea corridors for cable routes",
         "url": "https://offshorewindfarmprojects.com/europe/fugro-sweep-200-m-wide-north-sea-corridors-for-50-hertzs-4-gw-lanwin3-and-lanwin6-cable-routes",
         "auto": true
+      },
+      {
+        "date": "2026-11-06",
+        "title": "Meyer Werft Establishes Organizational, Legal Framework for Offshore Converter Business",
+        "url": "https://www.oedigital.com/news/544211-meyer-werft-establishes-organizational-legal-framework-for-offshore-converter-business",
+        "auto": true,
+        "also": [
+          {
+            "title": "Meyer Werft Establishes Organizational, Legal Framework for Offshore Converter Business",
+            "url": "https://www.marinelink.com/news/meyer-werft-establishes-organizational-544211",
+            "date": "2026-11-06"
+          }
+        ]
       }
     ],
     "updated": "2026-10-23",
@@ -940,6 +963,19 @@
         "title": "Fugro to sweep 200 m-wide North Sea corridors for cable routes",
         "url": "https://offshorewindfarmprojects.com/europe/fugro-sweep-200-m-wide-north-sea-corridors-for-50-hertzs-4-gw-lanwin3-and-lanwin6-cable-routes",
         "auto": true
+      },
+      {
+        "date": "2026-11-06",
+        "title": "Meyer Werft Establishes Organizational, Legal Framework for Offshore Converter Business",
+        "url": "https://www.oedigital.com/news/544211-meyer-werft-establishes-organizational-legal-framework-for-offshore-converter-business",
+        "auto": true,
+        "also": [
+          {
+            "title": "Meyer Werft Establishes Organizational, Legal Framework for Offshore Converter Business",
+            "url": "https://www.marinelink.com/news/meyer-werft-establishes-organizational-544211",
+            "date": "2026-11-06"
+          }
+        ]
       }
     ],
     "updated": "2026-10-26",

@@ -1,6 +1,20 @@
 {
-  "last_updated": "2026-11-02",
+  "last_updated": "2026-11-09",
   "changelog": [
+    {
+      "date": "2026-11-09",
+      "summary": "News scan: 3 article(s) matched to platforms, 11 unmatched relevant article(s).",
+      "changes": [
+        {
+          "ids": [
+            "lanwin3",
+            "lanwin6"
+          ],
+          "description": "News: Meyer Werft Establishes Organizational, Legal Framework for Offshore Converter Business",
+          "url": "https://www.oedigital.com/news/544211-meyer-werft-establishes-organizational-legal-framework-for-offshore-converter-business"
+        }
+      ]
+    },
     {
       "date": "2026-11-02",
       "summary": "News scan: 1 article(s) matched to platforms, 3 unmatched relevant article(s).",
